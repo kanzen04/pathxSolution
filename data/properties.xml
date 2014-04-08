@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    The properties in this file are loaded when The pathX application
+    first loads. It should specify all that's needed to know to run a flavor of the
+    game.
+-->
+<properties>
+    <property_list>    
+        <property name="FILE_GAME_PROPERTIES"   value="./pathX_properties.xml"></property>
+        <property name="FILE_PLAYER_RECORD"     value="PlayerRecord.dat"></property>
+        <property name="PATH_AUDIO"             value="./sfx/"></property>
+        <property name="PATH_IMG"               value="./img/"></property>
+    </property_list>
+
+    <property_options_list>
+    </property_options_list>
+</properties>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+    The properties in this file setup a Harry Potter flavor of this game called
+    The Sorting Hat. Note that by swapping out all these settings we could easily
+    change the flavor.
+-->
+<properties>
+    <property_list>
+        <!-- ALL THE IMAGES TO BE USED IN THE GAME -->
+        <property name="IMAGE_BUTTON_QUIT"              value="./ButtonQuit.png"></property>
+        <property name="IMAGE_BUTTON_QUIT_MOUSE_OVER"	value="./ButtonQuitMouseOver.png"></property>
+        <property name="IMAGE_SPLASH_BACKGROUND"		value="./SplashBackground.png"></property>
+        <property name="IMAGE_BUTTON_NEW"				value="./ButtonNew.png"></property>
+        <property name="IMAGE_BUTTON_NEW_MOUSE_OVER"	value="./ButtonNEwMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_RESET"				value="./ButtonReset.png"></property>
+        <property name="IMAGE_BUTTON_RESET_MOUSE_OVER"	value="./ButtonResetMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_SETTINGS"			value="./ButtonSettings.png"></property>
+        <property name="IMAGE_BUTTON_SETTINGS_MOUSE_OVER" value="./ButtonSettingsMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_HELP"				value="./ButtonHelp.png"></property>
+        <property name="IMAGE_BUTTON_HELP_MOUSE_OVER"	value="./ButtonHelpMouseOver.png"></property>
+        <property name="IMAGE_LEVEL_BACKGROUND"			value="./GameBackground.png"></property>
+        <property name="IMAGE_BUTTON_HOME"				value="./ButtonHome.png"></property>
+        <property name="IMAGE_UP_ARROW"					value="./UpArrow.png"></property>
+        <property name="IMAGE_UP_ARROW_MOUSE_OVER"		value="./UpArrowMouseOver.png"></property>
+        <property name="IMAGE_DOWN_ARROW"				value="./DownArrow.png"></property>
+        <property name="IMAGE_DOWN_ARROW_MOUSE_OVER"	value="./DownArrowMouseOver.png"></property>
+        <property name="IMAGE_RIGHT_ARROW"				value="./RightArrow.png"></property>
+        <property name="IMAGE_RIGHT_ARROW_MOUSE_OVER"	value="./RightArrowMouseOver.png"></property>
+        <property name="IMAGE_LEFT_ARROW"				value="./LeftArrow.png"></property>
+        <property name="IMAGE_LEFT_ARROW_MOUSE_OVER"	value="./LeftArrowMouseOver.png"></property>
+        <property name="IMAGE_MAP"						value="./Map.png"></property>
+        <property name="IMAGE_GAME_BACKGROUND"			value="./GameBackground.png"></property>
+        <property name="IMAGE_BUTTON_START"				value="./ButtonStart.png"></property>
+        <property name="IMAGE_BUTTON_START_MOUSE_OVER"	value="./ButtonStartMouseOver.png"></property>
+        <property name="IMAGE_BANK_ICON"				value="./BankIcon.png"></property>
+        <property name="IMAGE_MAKE_GREEN"				value="./MakeGreen.png"></property>
+        <property name="IMAGE_MAKE_GREEN_ACTIVE"		value="./MakeGreenActive.png"></property>
+        <property name="IMAGE_MAKE_RED"					value="./MakeRed.png"></property>
+        <property name="IMAGE_MAKE_RED_ACTIVE"			value="./MakeRedActive.png"></property>
+        <property name="IMAGE_FREEZE_TIME"				value="./FreezeTime.png"></property>
+        <property name="IMAGE_FREEZE_TIME_ACTIVE"		value="./FreezeTimeActive.png"></property>
+        <property name="IMAGE_DECREASE_SPEED"			value="./DecreaseSpeed.png"></property>
+        <property name="IMAGE_DECREASE_SPEED_ACTIVE"	value="./DecreaseSpeedActive.png"></property>
+        <property name="IMAGE_INCREASE_SPEED"			value="./IncreaseSpeed.png"></property>
+        <property name="IMAGE_INCREASE_SPEED_ACTIVE"	value="./IncreaseSpeedActive.png"></property>
+        <property name="IMAGE_INCREASE_PLAYER_SPEED"	value="./IncreasePlayerSpeed.png"></property>
+        <property name="IMAGE_FLAT_TIRE"				value="./FlatTire.png"></property>
+        <property name="IMAGE_FLAT_TIRE_ACTIVE"			value="./FlatTireActive.png"></property>
+        <property name="IMAGE_EMPTY_GAS"				value="./EmptyGas.png"></property>
+        <property name="IMAGE_EMPTY_GAS_ACTIVE"			value="./EmptyGasActive.png"></property>
+        <property name="IMAGE_CLOSE_ROAD"				value="./CloseRoad.png"></property>
+        <property name="IMAGE_CLOSE_ROAD_ACTIVE"		value="./CloseRoadActive.png"></property>
+        <property name="IMAGE_CLOSE_NODE"				value="./CloseNode.png"></property>
+        <property name="IMAGE_CLOSE_NODE_ACTIVE"		value="./CloseNodeActive.png"></property>
+        <property name="IMAGE_OPEN_NODE"				value="./OpenNode.png"></property>
+        <property name="IMAGE_OPEN_NODE_ACTIVE"			value="./OpenNodeActive.png"></property>
+        <property name="IMAGE_STEALING"					value="Stealing.png"></property>
+        <property name="IMAGE_STEALING_ACTIVE"			value="StealingActive.png"></property>
+        <property name="IMAGE_MIND_CONTROL"				value="MindControl.png"></property>
+        <property name="IMAGE_MIND_CONTROL_ACTIVE"		value="MindControlActive.png"></property>
+        <property name="IMAGE_INTANGIBILITY"			value="Intangibility.png"></property>
+        <property name="IMAGE_INTANGIBILITY_ACTIVE"		value="IntangiblityActive.png"></property>
+        <property name="IMAGE_MINDLESS_TERROR"			value="MindlessTerror.png"></property>
+        <property name="IMAGE_MINDLESS_TERROR_ACTIVE"	value="MindlessTerrorActive.png"></property>
+        <property name="IMAGE_FLYING"					value="Flying.png"></property>
+        <property name="IMAGE_FLYING_ACTIVE"			value="FlyingActive.png"></property>
+        <property name="IMAGE_GOD_MODE"					value="GodMode.png"></property>
+        <property name="IMAGE_GOD_MODE_ACTIVE"			value="GodModeActive.png"></property>
+
+
+        <!-- ALL THE TEXT TO BE DISPLAYED -->
+        <property name="TEXT_ERROR_LOADING_AUDIO"               value="Error Loading an Audio File"></property>
+        <property name="TEXT_ERROR_LOADING_LEVEL"               value="Error Loading a Level File"></property>
+        <property name="TEXT_ERROR_LOADING_RECORD"              value="Error Loading the Player Record"></property>
+        <property name="TEXT_ERROR_LOADING_XML_FILE"            value="Error Loading an XML File"></property>
+        <property name="TEXT_ERROR_SAVING_RECORD"               value="Error Saving the Player Record"></property>
+        <property name="TEXT_TITLE_BAR"							value="pathX"></property>
+        <property name="CLOSE_LEVEL_PROMPT"						value="Close"></property>
+        <property name="TEXT_RETRY_LEVEL"						value="Try Again"></property>
+        <property name="TEXT_EXIT_LEVEL"						value="Leave Town"></property>
+        <property name="TEXT_LEVEL_FAIL"						value="You've been caught. /n That means you have some 
+        legal bills to pay"
+
+
+        <!-- AUDIO FILES -->
+        <property name="AUDIO_CUE_ACTIVATE_SPECIAL"				value="./ActivateSpecial.wav"></property>
+        <property name="AUDIO_CUE_LOW_CASH"						value="./LowCash.wav"></property>
+        <property name="AUDIO_CUE_WIN"							value="./Win.wav"></property>
+        <property name="AUDIO_CUE_FAIL"							value="./Fail.wav"></property>
+        <property name="SONG_CUE_GAME_SCREEN"					value="./GameSong.wav"></property>
+        <property name="SONG_CUE_MENU_SCREEN"					value="./MenuSong.wav"></property>
+    </property_list>
+
+    <property_options_list>
+    </property_options_list>
+
+</properties>
