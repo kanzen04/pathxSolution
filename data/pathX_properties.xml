@@ -10,15 +10,15 @@
         <property name="IMAGE_BUTTON_QUIT"              value="./ButtonQuit.png"></property>
         <property name="IMAGE_BUTTON_QUIT_MOUSE_OVER"	value="./ButtonQuitMouseOver.png"></property>
         <property name="IMAGE_SPLASH_BACKGROUND"		value="./SplashBackground.png"></property>
-        <property name="IMAGE_BUTTON_NEW"				value="./ButtonNew.png"></property>
-        <property name="IMAGE_BUTTON_NEW_MOUSE_OVER"	value="./ButtonNEwMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_Play"				value="./ButtonPlay.png"></property>
+        <property name="IMAGE_BUTTON_Play_MOUSE_OVER"	value="./ButtonPlayMouseOver.png"></property>
         <property name="IMAGE_BUTTON_RESET"				value="./ButtonReset.png"></property>
         <property name="IMAGE_BUTTON_RESET_MOUSE_OVER"	value="./ButtonResetMouseOver.png"></property>
         <property name="IMAGE_BUTTON_SETTINGS"			value="./ButtonSettings.png"></property>
         <property name="IMAGE_BUTTON_SETTINGS_MOUSE_OVER" value="./ButtonSettingsMouseOver.png"></property>
         <property name="IMAGE_BUTTON_HELP"				value="./ButtonHelp.png"></property>
         <property name="IMAGE_BUTTON_HELP_MOUSE_OVER"	value="./ButtonHelpMouseOver.png"></property>
-        <property name="IMAGE_LEVEL_BACKGROUND"			value="./GameBackground.png"></property>
+        <property name="IMAGE_LEVEL_BACKGROUND"			value="./LevelSelectBackground.png"></property>
         <property name="IMAGE_BUTTON_HOME"				value="./ButtonHome.png"></property>
         <property name="IMAGE_UP_ARROW"					value="./UpArrow.png"></property>
         <property name="IMAGE_UP_ARROW_MOUSE_OVER"		value="./UpArrowMouseOver.png"></property>

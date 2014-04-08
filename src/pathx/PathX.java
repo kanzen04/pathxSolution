@@ -7,7 +7,7 @@
 package pathx;
 
 import properties_manager.PropertiesManager;
-
+import static pathx.PathXConstants.*;
 /**
  *
  * @author Andrew
@@ -21,7 +21,16 @@ public class PathX {
         try{
             //Load the app settings and properties.
             PropertiesManager props = PropertiesManager.getPropertiesManager();
+            props.addProperty(PropertiesManager.DATA_PATH_PROPERTY, PathXConstants.PATH_DATA);
+            props.loadProperties(PROPERTIES_FILE_NAME, PROPERTIES_SCHEMA_FILE_NAME);
             
+            // THEN WE'LL LOAD THE GAME FLAVOR AS SPECIFIED BY THE PROPERTIES FILE
+            String gameFlavorFile = props.getProperty(PathXPropertyType.FILE_GAME_PROPERTIES);
+            props.loadProperties(gameFlavorFile, PROPERTIES_SCHEMA_FILE_NAME);
+            
+            // NOW WE CAN LOAD THE UI, WHICH WILL USE ALL THE FLAVORED CONTENT
+            String appTitle = props.getProperty(SortingHatPropertyType.TEXT_TITLE_BAR_GAME);
+            miniGame.initMiniGame(appTitle, FPS, WINDOW_WIDTH, WINDOW_HEIGHT);
         }
     }
     public enum PathXPropertyType {
