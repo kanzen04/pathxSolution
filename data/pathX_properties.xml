@@ -54,18 +54,18 @@
         <property name="IMAGE_CLOSE_NODE_ACTIVE"		value="./CloseNodeActive.png"></property>
         <property name="IMAGE_OPEN_NODE"				value="./OpenNode.png"></property>
         <property name="IMAGE_OPEN_NODE_ACTIVE"			value="./OpenNodeActive.png"></property>
-        <property name="IMAGE_STEALING"					value="Stealing.png"></property>
-        <property name="IMAGE_STEALING_ACTIVE"			value="StealingActive.png"></property>
-        <property name="IMAGE_MIND_CONTROL"				value="MindControl.png"></property>
-        <property name="IMAGE_MIND_CONTROL_ACTIVE"		value="MindControlActive.png"></property>
-        <property name="IMAGE_INTANGIBILITY"			value="Intangibility.png"></property>
-        <property name="IMAGE_INTANGIBILITY_ACTIVE"		value="IntangiblityActive.png"></property>
-        <property name="IMAGE_MINDLESS_TERROR"			value="MindlessTerror.png"></property>
-        <property name="IMAGE_MINDLESS_TERROR_ACTIVE"	value="MindlessTerrorActive.png"></property>
-        <property name="IMAGE_FLYING"					value="Flying.png"></property>
-        <property name="IMAGE_FLYING_ACTIVE"			value="FlyingActive.png"></property>
-        <property name="IMAGE_GOD_MODE"					value="GodMode.png"></property>
-        <property name="IMAGE_GOD_MODE_ACTIVE"			value="GodModeActive.png"></property>
+        <property name="IMAGE_STEALING"					value="./Stealing.png"></property>
+        <property name="IMAGE_STEALING_ACTIVE"			value="./StealingActive.png"></property>
+        <property name="IMAGE_MIND_CONTROL"				value="./MindControl.png"></property>
+        <property name="IMAGE_MIND_CONTROL_ACTIVE"		value="./MindControlActive.png"></property>
+        <property name="IMAGE_INTANGIBILITY"			value="./Intangibility.png"></property>
+        <property name="IMAGE_INTANGIBILITY_ACTIVE"		value="./IntangiblityActive.png"></property>
+        <property name="IMAGE_MINDLESS_TERROR"			value="./MindlessTerror.png"></property>
+        <property name="IMAGE_MINDLESS_TERROR_ACTIVE"	value="./MindlessTerrorActive.png"></property>
+        <property name="IMAGE_FLYING"					value="./Flying.png"></property>
+        <property name="IMAGE_FLYING_ACTIVE"			value="./FlyingActive.png"></property>
+        <property name="IMAGE_GOD_MODE"					value="./GodMode.png"></property>
+        <property name="IMAGE_GOD_MODE_ACTIVE"			value="./GodModeActive.png"></property>
 
 
         <!-- ALL THE TEXT TO BE DISPLAYED -->
