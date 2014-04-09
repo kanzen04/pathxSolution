@@ -21,13 +21,21 @@
         <property name="IMAGE_LEVEL_BACKGROUND"			value="./LevelSelectBackground.png"></property>
         <property name="IMAGE_BUTTON_HOME"				value="./ButtonHome.png"></property>
         <property name="IMAGE_UP_ARROW"					value="./UpArrow.png"></property>
-        <property name="IMAGE_UP_ARROW_MOUSE_OVER"		value="./UpArrowMouseOver.png"></property>
+        <!-- 
+            <property name="IMAGE_UP_ARROW_MOUSE_OVER"		value="./UpArrowMouseOver.png"></property>
+        -->
         <property name="IMAGE_DOWN_ARROW"				value="./DownArrow.png"></property>
-        <property name="IMAGE_DOWN_ARROW_MOUSE_OVER"	value="./DownArrowMouseOver.png"></property>
+        <!--
+            <property name="IMAGE_DOWN_ARROW_MOUSE_OVER"	value="./DownArrowMouseOver.png"></property> 
+        -->
         <property name="IMAGE_RIGHT_ARROW"				value="./RightArrow.png"></property>
-        <property name="IMAGE_RIGHT_ARROW_MOUSE_OVER"	value="./RightArrowMouseOver.png"></property>
+        <!--
+            <property name="IMAGE_RIGHT_ARROW_MOUSE_OVER"	value="./RightArrowMouseOver.png"></property> 
+        -->
         <property name="IMAGE_LEFT_ARROW"				value="./LeftArrow.png"></property>
-        <property name="IMAGE_LEFT_ARROW_MOUSE_OVER"	value="./LeftArrowMouseOver.png"></property>
+        <!--
+            <property name="IMAGE_LEFT_ARROW_MOUSE_OVER"	value="./LeftArrowMouseOver.png"></property> 
+        -->
         <property name="IMAGE_MAP"						value="./Map.png"></property>
         <property name="IMAGE_GAME_BACKGROUND"			value="./GameBackground.png"></property>
         <property name="IMAGE_BUTTON_START"				value="./ButtonStart.png"></property>
