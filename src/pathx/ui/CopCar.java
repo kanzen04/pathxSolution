@@ -21,6 +21,7 @@ public class CopCar extends Car{
     
     @Override
     public ArrayList<Node> generatePath(){
+        return null;
         //TODO Create an algorithm for finding a CopCar's path.
     }
 }

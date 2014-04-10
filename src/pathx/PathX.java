@@ -8,15 +8,20 @@ package pathx;
 
 import properties_manager.PropertiesManager;
 import static pathx.PathXConstants.*;
+import pathx.ui.PathXErrorHandler;
+import xml_utilities.InvalidXMLFileFormatException;
 /**
  *
  * @author Andrew
  */
 public class PathX {
 
-    /**
-     * @param args the command line arguments
-     */
+    // THIS HAS THE FULL USER INTERFACE AND ONCE IN EVENT
+    // HANDLING MODE, BASICALLY IT BECOMES THE FOCAL
+    // POINT, RUNNING THE UI AND EVERYTHING ELSE
+    static PathXMiniGame miniGame = new PathXMiniGame();
+    
+    
     public static void main(String[] args) {
         try{
             //Load the app settings and properties.
@@ -29,8 +34,15 @@ public class PathX {
             props.loadProperties(gameFlavorFile, PROPERTIES_SCHEMA_FILE_NAME);
             
             // NOW WE CAN LOAD THE UI, WHICH WILL USE ALL THE FLAVORED CONTENT
-            String appTitle = props.getProperty(SortingHatPropertyType.TEXT_TITLE_BAR_GAME);
+            String appTitle = props.getProperty(PathXPropertyType.TEXT_TITLE_BAR);
             miniGame.initMiniGame(appTitle, FPS, WINDOW_WIDTH, WINDOW_HEIGHT);
+            
+            miniGame.startGame();
+        }
+        catch (InvalidXMLFileFormatException ixmlffe){
+            // LET THE ERROR HANDLER PROVIDE THE RESPONSE
+            PathXErrorHandler errorHandler = miniGame.getErrorHandler();
+            errorHandler.processError(PathXPropertyType.TEXT_ERROR_LOADING_XML_FILE);
         }
     }
     public enum PathXPropertyType {
@@ -49,6 +61,7 @@ public class PathX {
         /* IMAGE FILE NAMES */
         IMAGE_QUIT_BUTTON,
         IMAGE_QUIT_BUTTON_MOUSE_OVER,
+        IMAGE_WINDOW_ICON,
         
         //Splash images
         IMAGE_SPLASH_BACKGROUND,

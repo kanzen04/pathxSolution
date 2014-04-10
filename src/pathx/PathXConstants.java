@@ -6,6 +6,8 @@
 
 package pathx;
 
+import java.awt.Font;
+
 /**
  *
  * @author Andrew
@@ -90,4 +92,51 @@ public class PathXConstants {
     public static final int MAIN_QUIT_BUTTON_X = 550;
     public static final int MAIN_QUIT_BUTTON_Y = 50;
     
+    public static final int LEVEL_SELECT_QUIT_BUTTON_X = MAIN_QUIT_BUTTON_X;
+    public static final int LEVEL_SELECT_QUIT_BUTTON_Y = MAIN_QUIT_BUTTON_Y;
+    public static final int LEVEL_SELECT_BACK_BUTTON_X = LEVEL_SELECT_QUIT_BUTTON_X - 60;
+    public static final int LEVEL_SELECT_BALANCE_X = 320;
+    public static final int LEVEL_SELECT_BALANCE_Y = 40;
+    public static final int LEVEL_SELECT_GOAL_X = 275;
+    public static final int LEVEL_SELECT_GOAL_Y = 70;
+    public static final int LEVEL_SELECT_CITY_X = 460;
+    public static final int LEVEL_SELECT_CITY_Y = 430;
+    public static final int LEFT_ARROW_X = 10;
+    public static final int LEFT_ARROW_Y = 355;
+    public static final int UP_ARROW_X = 40;
+    public static final int UP_ARROW_Y = 325;
+    public static final int RIGHT_ARROW_X = 70;
+    public static final int RIGHT_ARROW_Y = 325;
+    public static final int DOWN_ARROW_X = 40;
+    public static final int DOWN_ARROW_Y = 385;
+    
+    public static final int GAME_BACK_BUTTON_X = 10;
+    public static final int GAME_BACK_BUTTON_Y = 30;
+    public static final int GAME_QUIT_BUTTON_X = 70;
+    public static final int GAME_QUIT_BUTTONY_Y = 30;
+    public static final int GAME_START_BUTTON_X = 10;
+    public static final int GAME_START_BUTTON_Y = 100;
+    public static final int GAME_SPECIAL_WIDTH = 30;
+    public static final int GAME_SPECIAL_LENGTH = 30;
+    public static final int FIRST_SPECIAL_X = 10;
+    public static final int FIRST_SPECIAL_Y = 185;
+    public static final int GAME_CITY_LABEL_X = 165;
+    public static final int GAME_CITY_LABEL_Y = 25;
+    public static final int GAME_REWARD_LABEL_X = 165;
+    public static final int GAME_REWARD_LABEL_Y = 55;
+    
+    public static final int GAME_OVERLAY_X = 120;
+    public static final int GAME_OVERLAY_Y = 90;
+    public static final int OVERLAY_CITY_LABEL_X = GAME_OVERLAY_X + 20;
+    public static final int OVERLAY_CITY_LABEL_Y = GAME_OVERLAY_Y + 20;
+    public static final int OVERLAY_LEVEL_DIALOG_X = OVERLAY_CITY_LABEL_X;
+    public static final int OVERLAY_LEVEL_DIALOG_Y = OVERLAY_CITY_LABEL_Y + 50;
+    public static final int OVERLAY_BUTTON_CLOSE_X = GAME_OVERLAY_X + 150;
+    public static final int OVERLAY_BUTTON_CLOSE_Y = GAME_OVERLAY_Y + 200;
+    
+    // FONTS USED DURING FOR TEXTUAL GAME DISPLAYS
+    public static final Font FONT_TEXT_DISPLAY = new Font("Helvetica", Font.BOLD, 48);
+    public static final Font FONT_LEVEL_DISPLAY = new Font("Helvetica", Font.PLAIN, 24);
+    public static final Font FONT_DEBUG_TEXT = new Font(Font.MONOSPACED, Font.BOLD, 14);
+    public static final Font FONT_STATS = new Font(Font.MONOSPACED, Font.BOLD, 20);
 }

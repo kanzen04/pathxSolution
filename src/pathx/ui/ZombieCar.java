@@ -6,6 +6,7 @@
 
 package pathx.ui;
 
+import java.util.ArrayList;
 import mini_game.Sprite;
 
 /**
@@ -20,6 +21,7 @@ public class ZombieCar extends Car{
     
     @Override
     public ArrayList<Node> generatePath(){
+        return null;
         //TODO create algorithm for finding ZombieCar paths.
     }
 }
