@@ -9,6 +9,7 @@ package pathx;
 import properties_manager.PropertiesManager;
 import static pathx.PathXConstants.*;
 import pathx.ui.PathXErrorHandler;
+import pathx.ui.PathXMiniGame;
 import xml_utilities.InvalidXMLFileFormatException;
 /**
  *
@@ -64,18 +65,20 @@ public class PathX {
         IMAGE_WINDOW_ICON,
         
         //Splash images
-        IMAGE_SPLASH_BACKGROUND,
-        IMAGE_BUTTON_NEW,
-        IMAGE_BUTTON_NEW_MOUSE_OVER,
+        IMAGE_BACKGROUND_MENU,
+        IMAGE_BUTTON_PLAY,
+        IMAGE_BUTTON_PLAY_MOUSE_OVER,
         IMAGE_BUTTON_RESET,
         IMAGE_BUTTON_RESET_MOUSE_OVER,
         IMAGE_BUTTON_SETTINGS,
         IMAGE_BUTTON_SETTINGS_MOUSE_OVER,
         IMAGE_BUTTON_HELP,
         IMAGE_BUTTON_HELP_MOUSE_OVER,
+        
         //Level select images
-        IMAGE_LEVEL_BACKGROUND,
-        IMAGE_BUTTON_HOME,
+        IMAGE_BACKGROUND_LEVEL,
+        IMAGE_BUTTON_BACK,
+        IMAGE_BUTTON_BACK_MOUSE_OVER,
         IMAGE_UP_ARROW,
         IMAGE_UP_ARROW_MOUSE_OVER,
         IMAGE_DOWN_ARROW,
@@ -86,8 +89,12 @@ public class PathX {
         IMAGE_LEFT_ARROW_MOUSE_OVER,
         IMAGE_MAP,
         //In-game images
-        IMAGE_GAME_BACKGROUND,
+        IMAGE_BACKGROUND_GAME,
+        IMAGE_POPUP_BACKGROUND,
+        IMAGE_BUTTON_POPUP_CLOSE,
+        IMAGE_BUTTON_POPUP_CLOSE_MOUSE_OVER,
         IMAGE_BUTTON_START,
+        IMAGE_BUTTON_START_MOUSE_OVER,
         IMAGE_BANK_ICON,
         IMAGE_MAKE_GREEN,
         IMAGE_MAKE_RED,
@@ -106,6 +113,10 @@ public class PathX {
         IMAGE_MINDLESS_TERROR,
         IMAGE_FLYING,
         IMAGE_GOD_MODE,
+        
+        IMAGE_BACKGROUND_SETTINGS,
+        IMAGE_BUTTON_TOGGLE_OFF,
+        IMAGE_BUTTON_TOGGLE_ON,
         
         //GAME TEXT
         TEXT_ERROR_LOADING_AUDIO,

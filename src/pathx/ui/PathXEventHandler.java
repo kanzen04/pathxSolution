@@ -24,7 +24,25 @@ public class PathXEventHandler {
         dataModel = initGame.getDataModel();
     }
     
+    /**
+     * Called when the user clicks the close window button.
+     */    
+    public void respondToExitRequest()
+    {
+        // IF THE GAME IS STILL GOING ON, END IT AS A LOSS
+        if (game.getDataModel().inProgress())
+        {
+            game.getDataModel().endGameAsLoss();
+        }
+        // AND CLOSE THE ALL
+        System.exit(0);        
+    }
+    
     public void switchToMainMenu(){
+        
+    }
+    
+    public void switchToLevelSelectScreen(){
         
     }
     
@@ -51,6 +69,10 @@ public class PathXEventHandler {
     }
     
     public void closeLevelDialog(){
+        
+    }
+    
+    public void startLevelRequest(){
         
     }
     

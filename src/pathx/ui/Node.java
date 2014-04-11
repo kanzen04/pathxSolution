@@ -40,15 +40,15 @@ public class Node {
     }
     
     public void makeGreen(){
-        setCurrentState(NodeState.GREEN.toString());
+        setCurrentState(PathXSpriteState.GREEN.toString());
     }
     
     public void makeRed(){
-        setCurrentState(NodeState.RED.toString());
+        setCurrentState(PathXSpriteState.RED.toString());
     }
     
     public void close(){
-        setCurrentState(NodeState.CLOSED.toString());       
+        setCurrentState(PathXSpriteState.CLOSED.toString());       
     }
     
     public boolean hasRoad(Road r){

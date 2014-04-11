@@ -40,12 +40,12 @@ public class Road {
     
     //Open the road for use.
     public void open(){
-        currentState = RoadState.OPEN.toString();
+        currentState = PathXSpriteState.OPEN.toString();
     }
     
     //Close the road for use.
     public void close(){
-        currentState = RoadState.CLOSED.toString();
+        currentState = PathXSpriteState.CLOSED.toString();
     }
     
     //Activated by a special. Increases the speed limit by 50%

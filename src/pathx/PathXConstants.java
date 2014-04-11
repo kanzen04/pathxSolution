@@ -28,13 +28,13 @@ public class PathXConstants {
     
     //IN-GAME UI CONTROL TYPES
     //Main Menu
-    public static final String PLAY_GAME_BUTTON_TYPE = "PLAY_GAME_BUTTON_TYPE";
+    public static final String PLAY_BUTTON_TYPE = "PLAY_BUTTON_TYPE";
     public static final String RESET_BUTTON_TYPE = "RESET_GAME_BUTTON_TYPE";
     public static final String SETTINGS_BUTTON_TYPE = "SETTINGS_GAME_BUTTON_TYPE";
     public static final String HELP_BUTTON_TYPE = "HELP_GAME_BUTTON_TYPE";
     
     //Level Select Screen
-    public static final String HOME_BUTTON_TYPE = "HOME_BUTTON_TYPE";
+    public static final String BACK_BUTTON_TYPE = "BACK_BUTTON_TYPE";
     public static final String QUIT_BUTTON_TYPE = "QUIT_BUTTON_TYPE";
     public static final String UP_ARROW_BUTTON_TYPE = "UP_ARROW_BUTTON_TYPE";
     public static final String DOWN_ARROW_BUTTON_TYPE = "DOWN_ARROW_BUTTON_TYPE";
@@ -48,6 +48,10 @@ public class PathXConstants {
     
     //Game Screen
     public static final String START_BUTTON_TYPE = "START_BUTTON_TYPE";
+    public static final String GAME_QUIT_BUTTON_TYPE = "GAME_QUIT_BUTTON_TYPE";
+    public static final String GAME_BACK_BUTTON_TYPE = "GAME_BACK_BUTTON_TYPE";
+    public static final String GAME_POPUP_TYPE = "GAME_POPUP_TYPE";
+    public static final String POPUP_CLOSE_BUTTON_TYPE = "POPUP_CLOSE_BUTTON_TYPE";
     public static final String MAKE_GREEN_BUTTON_TYPE = "MAKE_GREEN_BUTTON_TYPE";
     public static final String MAKE_RED_BUTTON_TYPE = "MAKE_RED_BUTTON_TYPE";
     public static final String FREEZE_BUTTON_TYPE = "FREEZE_BUTTON_TYPE";
@@ -85,8 +89,8 @@ public class PathXConstants {
     public static final int MAX_CAR_VELOCITY = 20;
     
     // UI CONTROLS POSITIONS IN THE GAME SCREEN
-    public static final int MAIN_MENU_BUTTON_WIDTH = 100;
-    public static final int MAIN_MENU_BUTTON_GAP = 50;
+    public static final int MENU_BUTTON_WIDTH = 100;
+    public static final int MENU_BUTTON_GAP = 50;
     public static final int PLAY_BUTTON_X = 50;
     public static final int PLAY_BUTTON_Y = 350;
     public static final int MAIN_QUIT_BUTTON_X = 550;
@@ -113,7 +117,7 @@ public class PathXConstants {
     public static final int GAME_BACK_BUTTON_X = 10;
     public static final int GAME_BACK_BUTTON_Y = 30;
     public static final int GAME_QUIT_BUTTON_X = 70;
-    public static final int GAME_QUIT_BUTTONY_Y = 30;
+    public static final int GAME_QUIT_BUTTON_Y = 30;
     public static final int GAME_START_BUTTON_X = 10;
     public static final int GAME_START_BUTTON_Y = 100;
     public static final int GAME_SPECIAL_WIDTH = 30;
