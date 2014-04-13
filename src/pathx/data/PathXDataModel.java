@@ -110,4 +110,25 @@ public class PathXDataModel extends MiniGameDataModel{
     public PathXRecord getRecord() {
         return record;
     }
+
+    public HashMap<String, Boolean> getSpecials() {
+        return specials;
+    }
+
+    public HashMap<String, PathXLevel> getLevels() {
+        return levels;
+    }
+
+    public void setSpecials(HashMap<String, Boolean> specials) {
+        this.specials = specials;
+    }
+
+    public void setLevels(HashMap<String, PathXLevel> levels) {
+        this.levels = levels;
+    }
+    
+    public void updateRecord(){
+        record.setLevels(levels);
+        record.setSpecials(specials);
+    }
 }

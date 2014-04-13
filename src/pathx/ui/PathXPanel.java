@@ -11,16 +11,24 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.text.NumberFormat;
 import java.util.Collection;
+import java.util.HashMap;
 import javax.swing.JPanel;
 import mini_game.MiniGame;
 import mini_game.Sprite;
 import mini_game.SpriteType;
 import mini_game.Viewport;
-import pathx.PathX;
 import pathx.PathX.PathXPropertyType;
 import pathx.PathXConstants;
-import static pathx.PathXConstants.*;
+import static pathx.PathXConstants.BACKGROUND_TYPE;
+import static pathx.PathXConstants.FONT_TEXT_DISPLAY;
+import static pathx.PathXConstants.LEVEL_SELECT_SCREEN_STATE;
+import static pathx.PathXConstants.VIEWPORT_HEIGHT;
+import static pathx.PathXConstants.VIEWPORT_WIDTH;
+import static pathx.PathXConstants.VIEWPORT_X;
+import static pathx.PathXConstants.VIEWPORT_Y;
 import pathx.data.PathXDataModel;
+import pathx.data.PathXLevel;
+import static pathx.ui.PathXSpriteState.VISIBLE;
 import properties_manager.PropertiesManager;
 
 /**
@@ -32,6 +40,7 @@ public class PathXPanel extends JPanel{
     private MiniGame game;
     
     private PathXDataModel dataModel;
+    private PathXEventHandler eventHandler;
     
     private NumberFormat numberFormatter;
     private PropertiesManager props = PropertiesManager.getPropertiesManager();
@@ -56,6 +65,7 @@ public class PathXPanel extends JPanel{
         numberFormatter.setMaximumFractionDigits(3);
         map = game.loadImage(props.getProperty(PathXPropertyType.PATH_IMG)
                 + props.getProperty(PathXPropertyType.IMAGE_MAP));
+        eventHandler = ((PathXMiniGame)game).getEventHandler();
     }
     
     /**
@@ -150,6 +160,35 @@ public class PathXPanel extends JPanel{
         int vpx = vp.getViewportX();
         int vpy = vp.getViewportY();
         g.drawImage(map, VIEWPORT_X, VIEWPORT_Y, VIEWPORT_X + VIEWPORT_WIDTH, VIEWPORT_Y + VIEWPORT_HEIGHT, vpx, vpy, vpx + VIEWPORT_WIDTH , vpy + VIEWPORT_HEIGHT, this);
+        
+        //Render level nodes
+        Collection<PathXLevel> levels = dataModel.getLevels().values();
+        for (PathXLevel level : levels){
+            int x = level.getxPos();
+            int y = level.getyPos();
+            
+            // if the level is completed draw a green circle at the appropriate 
+            //coordinates otherwise draw a red circle
+            if (level.isCompleted()){
+                SpriteType sT = new SpriteType(PathXConstants.COMPLETE_LEVEL_TYPE);
+                sT.addState("VISIBLE", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.COMPLETE_LEVEL_TYPE));
+                sT.addState("MOUSE_OVER", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.COMPLETE_LEVEL_TYPE));
+
+                Sprite s = new Sprite(sT, x, y, 0, 0, "VISIBLE");
+//                s.setActionListener(new ActionListener(){
+//                    public void ActionPerformed()
+//                    {   eventHandler.
+//                });
+                renderSprite(g, s);
+            }else{
+                SpriteType sT = new SpriteType(PathXConstants.INCOMPLETE_LEVEL_TYPE);
+                sT.addState("VISIBLE", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.INCOMPLETE_LEVEL_TYPE));
+                sT.addState("MOUSE_OVER", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.INCOMPLETE_LEVEL_TYPE));
+
+                Sprite s = new Sprite(sT, x, y, 0, 0, "VISIBLE");
+                renderSprite(g, s);
+            }
+        }
     }
 
     private void renderLevelSelectStats(Graphics g) {

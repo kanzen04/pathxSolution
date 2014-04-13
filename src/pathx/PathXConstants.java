@@ -41,6 +41,9 @@ public class PathXConstants {
     public static final String RIGHT_ARROW_BUTTON_TYPE = "RIGHT_ARROW_BUTTON_TYPE";
     public static final String LEFT_ARROW_BUTTON_TYPE = "LEFT_ARROW_BUTTON_TYPE";
     public static final String MAP_TYPE = "MAP_TYPE";
+    public static final String LOCKED_LEVEL_TYPE = "LOCKED_LEVEL_TYPE";
+    public static final String INCOMPLETE_LEVEL_TYPE = "INCOMPLETE_LEVEL_TYPE";
+    public static final String COMPLETE_LEVEL_TYPE = "COMPLETE_LEVEL_TYPE";
     public static final String CLOSE_BUTTON_TYPE = "CLOSE_BUTTON_TYPE";
     public static final int VIEWPORT_X = 12;
     public static final int VIEWPORT_Y = 115;

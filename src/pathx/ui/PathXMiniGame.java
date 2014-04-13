@@ -24,6 +24,7 @@ import pathx.PathXConstants;
 import static pathx.PathXConstants.*;
 import pathx.data.PathXDataModel;
 import pathx.data.PathXRecord;
+import pathx.file.PathXFileManager;
 import static pathx.ui.PathXSpriteState.*;
 import properties_manager.PropertiesManager;
 
@@ -49,13 +50,30 @@ public class PathXMiniGame extends MiniGame{
     
     private Viewport levelSelect;
     //Loads and saves player records.
-    //private PathXFileManager fileManager;
+    private PathXFileManager fileManager;
     
     //Indicates the current screen being displayed.
     String screenState;
     
     public PathXErrorHandler getErrorHandler(){
         return errorHandler;
+    }
+    
+    //This method is used to get images of a locked, incomplete, or complete level
+    // node for the level select screen.
+    public BufferedImage getLevelNodeImage(String levelStatus){
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        String imgPath = props.getProperty(PathXPropertyType.PATH_IMG);
+        switch (levelStatus) {
+            case PathXConstants.LOCKED_LEVEL_TYPE:
+                return loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_LOCKED_LEVEL));
+            case PathXConstants.INCOMPLETE_LEVEL_TYPE:
+                return loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_INCOMPLETE_LEVEL));
+            case PathXConstants.COMPLETE_LEVEL_TYPE:
+                return loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_COMPLETED_LEVEL));
+            default:
+                return null;
+        }
     }
     
     public boolean isCurrentScreenState(String screenState){
@@ -70,6 +88,7 @@ public class PathXMiniGame extends MiniGame{
         
         //ACTIVE NORTH PANEL CONTROLS
         guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(BACK_BUTTON_TYPE).setEnabled(true);
         
         //ACTIVATE ARROW BUTTONS
         guiButtons.get(UP_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
@@ -168,14 +187,19 @@ public class PathXMiniGame extends MiniGame{
         //Initialize error handlier
         errorHandler = new PathXErrorHandler(window);
         
-        //Initialize file manager.
-        //fileManager = new PathXFileManager();
         
         //Load a saved player record.
         //record = fileManager.loadRecord();
         
         //Initialize the data model.
         data = new PathXDataModel(this);
+                
+        //Initialize file manager.
+        fileManager = new PathXFileManager(this);
+        
+        //Load the PathXLevels from the XML file.
+//        fileManager.loadLevelDetails();
+//        ((PathXDataModel)data).updateRecord();
     }
 
     @Override
@@ -222,7 +246,7 @@ public class PathXMiniGame extends MiniGame{
         initLevelSelectButtons();
         initGameButtons();
         initSettingsButtons();
-                
+         
     }
     
     private void initMenuButtons(){
@@ -352,7 +376,7 @@ public class PathXMiniGame extends MiniGame{
         this.setKeyListener(new KeyAdapter(){
             public void keyPressed(KeyEvent ke)
             {   
-                eventHandler.respondToKeyPress(ke.getKeyCode());    
+                getEventHandler().respondToKeyPress(ke.getKeyCode());    
             }
         });
     }
@@ -470,13 +494,15 @@ public class PathXMiniGame extends MiniGame{
         window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         window.addWindowListener(new WindowAdapter(){
             public void windowClosing(WindowEvent we) 
-            { eventHandler.respondToExitRequest(); }
+            {   getEventHandler().respondToExitRequest(); }
         });
         
         initMainMenuHandlers();
         initLevelSelectHandlers();
         initGameScreenHandlers();
         initSettingsHandlers();
+        fileManager.loadLevelDetails();
+        ((PathXDataModel)data).updateRecord();
     }
 
     private void initMainMenuHandlers() {
@@ -484,21 +510,21 @@ public class PathXMiniGame extends MiniGame{
         Sprite playButton = guiButtons.get(PLAY_BUTTON_TYPE);
         playButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                { eventHandler.switchToLevelSelectScreen();  }
+                { getEventHandler().switchToLevelSelectScreen();  }
         });
         
         //Set reset button response
         Sprite resetButton = guiButtons.get(RESET_BUTTON_TYPE);
         resetButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                { eventHandler.resetRequest();  }
+                { getEventHandler().resetRequest();  }
         });
         
         //Set settings button response
         Sprite settingsButton = guiButtons.get(SETTINGS_BUTTON_TYPE);
         settingsButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.switchToSettingsMenu(); }
+                {   getEventHandler().switchToSettingsMenu(); }
         });
         
         //Set help button response
@@ -506,7 +532,7 @@ public class PathXMiniGame extends MiniGame{
         settingsButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
                 {   
-                    eventHandler.switchToSettingsMenu();    
+                    getEventHandler().switchToSettingsMenu();    
                 }
         });
         
@@ -514,7 +540,7 @@ public class PathXMiniGame extends MiniGame{
         Sprite quitButton = guiButtons.get(QUIT_BUTTON_TYPE);
         quitButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.quitGameRequest(); }
+                {   getEventHandler().quitGameRequest(); }
         });
     }
     
@@ -523,21 +549,21 @@ public class PathXMiniGame extends MiniGame{
         Sprite backButton = guiButtons.get(BACK_BUTTON_TYPE);
         backButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.switchToMainMenu();    }
+                {   getEventHandler().switchToMainMenu();    }
         });
         
         //Scroll up arrow button
         Sprite upArrow = guiButtons.get(UP_ARROW_BUTTON_TYPE);
         upArrow.setActionListener(new ActionListener(){ 
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.scrollUpRequest(); }
+                {   getEventHandler().scrollUpRequest(); }
         });
         
         //Scroll down arrow button
         Sprite downArrow = guiButtons.get(DOWN_ARROW_BUTTON_TYPE);
         downArrow.setActionListener(new ActionListener(){
                 public void actionPerformed(ActionEvent ae)
-                {   eventHandler.scrollDownRequest();   }
+                {   getEventHandler().scrollDownRequest();   }
         });
         
         //Scroll left arrow button
@@ -545,7 +571,7 @@ public class PathXMiniGame extends MiniGame{
         leftArrow.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
                 {   
-                    eventHandler.scrollLeftRequest();   
+                    getEventHandler().scrollLeftRequest();   
                 }
         });
         
@@ -554,7 +580,7 @@ public class PathXMiniGame extends MiniGame{
         rightArrow.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
                 {   
-                    eventHandler.scrollRightRequest();  
+                    getEventHandler().scrollRightRequest();  
                 }
         });
     }
@@ -564,20 +590,20 @@ public class PathXMiniGame extends MiniGame{
         Sprite backButton = guiButtons.get(GAME_BACK_BUTTON_TYPE);
         backButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.switchToLevelSelectScreen();   }
+                {   getEventHandler().switchToLevelSelectScreen();   }
         });
         
         //Quit Button
         Sprite quitButton = guiButtons.get(GAME_QUIT_BUTTON_TYPE);
         quitButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.quitGameRequest();  }
+                {   getEventHandler().quitGameRequest();  }
         });
         
         Sprite startButton = guiButtons.get(START_BUTTON_TYPE);
         startButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.startLevelRequest();   }
+                {   getEventHandler().startLevelRequest();   }
         });
         
         //SPECIALS EVENT HANDLERS GO HERE
@@ -589,7 +615,7 @@ public class PathXMiniGame extends MiniGame{
         soundToggle.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
                 {   
-                    eventHandler.toggleSoundRequest();  
+                    getEventHandler().toggleSoundRequest();  
                 }
         });
         
@@ -598,7 +624,7 @@ public class PathXMiniGame extends MiniGame{
         musicToggle.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
                 {   
-                    eventHandler.toggleMusicRequest();  
+                    getEventHandler().toggleMusicRequest();  
                 }
         });
         
@@ -661,6 +687,10 @@ public class PathXMiniGame extends MiniGame{
         //levelSelect.setViewportSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         
         data.setViewport(levelSelect);
+    }
+
+    public PathXEventHandler getEventHandler() {
+        return eventHandler;
     }
 
 }

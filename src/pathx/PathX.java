@@ -89,6 +89,9 @@ public class PathX {
         IMAGE_LEFT_ARROW,
         IMAGE_LEFT_ARROW_MOUSE_OVER,
         IMAGE_MAP,
+        IMAGE_LOCKED_LEVEL,
+        IMAGE_INCOMPLETE_LEVEL,
+        IMAGE_COMPLETED_LEVEL,
         //In-game images
         IMAGE_BACKGROUND_GAME,
         IMAGE_POPUP_BACKGROUND,
@@ -118,6 +121,9 @@ public class PathX {
         IMAGE_BACKGROUND_SETTINGS,
         IMAGE_BUTTON_TOGGLE_OFF,
         IMAGE_BUTTON_TOGGLE_ON,
+        
+        //Used to load details for every level
+        LEVEL_OPTIONS,
         
         //GAME TEXT
         TEXT_ERROR_LOADING_AUDIO,
