@@ -108,9 +108,9 @@ public class PathXConstants {
     public static final int LEVEL_SELECT_QUIT_BUTTON_Y = MAIN_QUIT_BUTTON_Y;
     public static final int LEVEL_SELECT_BACK_BUTTON_X = LEVEL_SELECT_QUIT_BUTTON_X - 5;
     public static final int LEVEL_SELECT_BALANCE_X = 320;
-    public static final int LEVEL_SELECT_BALANCE_Y = 40;
+    public static final int LEVEL_SELECT_BALANCE_Y = 58;
     public static final int LEVEL_SELECT_GOAL_X = 275;
-    public static final int LEVEL_SELECT_GOAL_Y = 70;
+    public static final int LEVEL_SELECT_GOAL_Y = 86;
     public static final int LEVEL_SELECT_CITY_X = 460;
     public static final int LEVEL_SELECT_CITY_Y = 430;
     public static final int LEFT_ARROW_X = 10;
@@ -154,8 +154,8 @@ public class PathXConstants {
     
     
     // FONTS USED DURING FOR TEXTUAL GAME DISPLAYS
-    public static final Font FONT_TEXT_DISPLAY = new Font("Helvetica", Font.BOLD, 48);
-    public static final Font FONT_LEVEL_DISPLAY = new Font("Helvetica", Font.PLAIN, 24);
+    public static final Font FONT_TEXT_DISPLAY = new Font(Font.SANS_SERIF, Font.BOLD, 24);
+    public static final Font FONT_LEVEL_DISPLAY = new Font(Font.SANS_SERIF, Font.PLAIN, 24);
     public static final Font FONT_DEBUG_TEXT = new Font(Font.MONOSPACED, Font.BOLD, 14);
     public static final Font FONT_STATS = new Font(Font.MONOSPACED, Font.BOLD, 20);
 }

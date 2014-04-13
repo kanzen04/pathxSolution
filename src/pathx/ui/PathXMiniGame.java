@@ -656,7 +656,9 @@ public class PathXMiniGame extends MiniGame{
         levelSelect.setViewportSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         levelSelect.setGameWorldSize(MAP_WIDTH, MAP_HEIGHT);
         levelSelect.setNorthPanelHeight(LEVEL_SELECT_NORTH_PANEL_HEIGHT);
+        //levelSelect.initViewportMargins();
         levelSelect.updateViewportBoundaries();
+        //levelSelect.setViewportSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
         
         data.setViewport(levelSelect);
     }

@@ -18,6 +18,7 @@ import mini_game.SpriteType;
 import mini_game.Viewport;
 import pathx.PathX;
 import pathx.PathX.PathXPropertyType;
+import pathx.PathXConstants;
 import static pathx.PathXConstants.*;
 import pathx.data.PathXDataModel;
 import properties_manager.PropertiesManager;
@@ -96,6 +97,7 @@ public class PathXPanel extends JPanel{
             }
             if (((PathXMiniGame) game).isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)) {
                 renderMap(g);
+                renderLevelSelectStats(g);
             }
             
             //RENDER BUTTONS AND DECOR
@@ -148,5 +150,14 @@ public class PathXPanel extends JPanel{
         int vpx = vp.getViewportX();
         int vpy = vp.getViewportY();
         g.drawImage(map, VIEWPORT_X, VIEWPORT_Y, VIEWPORT_X + VIEWPORT_WIDTH, VIEWPORT_Y + VIEWPORT_HEIGHT, vpx, vpy, vpx + VIEWPORT_WIDTH , vpy + VIEWPORT_HEIGHT, this);
+    }
+
+    private void renderLevelSelectStats(Graphics g) {
+        g.setFont(FONT_TEXT_DISPLAY);
+        String balance = "";
+        balance += dataModel.getRecord().balance;
+        g.drawString(balance, PathXConstants.LEVEL_SELECT_BALANCE_X, PathXConstants.LEVEL_SELECT_BALANCE_Y);
+        String goal = 50000 + "";
+        g.drawString(goal, PathXConstants.LEVEL_SELECT_GOAL_X, PathXConstants.LEVEL_SELECT_GOAL_Y);
     }
 }

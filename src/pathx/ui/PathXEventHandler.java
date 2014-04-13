@@ -97,29 +97,29 @@ public class PathXEventHandler {
     }
     //Will either scroll the level select or game level view.
     public void scrollUpRequest(){
-        if (vp.getMinViewportY() < vp.getViewportY() - 2) {
-            dataModel.getViewport().scroll(0, -2);
+        if (vp.getMinViewportY() < vp.getViewportY() - 4) {
+            dataModel.getViewport().scroll(0, -4);
         }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollDownRequest(){
-        if (vp.getMaxViewportY() > vp.getViewportY() + 2) {
-            dataModel.getViewport().scroll(0, 2);
+        if (vp.getMaxViewportY() > vp.getViewportY() + 4) {
+            dataModel.getViewport().scroll(0, 4);
         }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollLeftRequest(){
-        if (vp.getMinViewportX() < vp.getViewportX() - 2) {
-            dataModel.getViewport().scroll(-2, 0);
+        if (vp.getMinViewportX() < vp.getViewportX() - 4) {
+            dataModel.getViewport().scroll(-4, 0);
         }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollRightRequest(){
-        if (vp.getMaxViewportX() > vp.getViewportX() + 2) {
-            dataModel.getViewport().scroll(2, 0);
+        if (vp.getMaxViewportX() > vp.getViewportX() + 4) {
+            dataModel.getViewport().scroll(4, 0);
         }
     }
     
@@ -220,6 +220,18 @@ public class PathXEventHandler {
         if (keyCode == KeyEvent.VK_RIGHT){
             if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)){
                 scrollRightRequest();
+            }
+        }else if (keyCode == KeyEvent.VK_LEFT){
+            if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)){
+                scrollLeftRequest();
+            }
+        }else if (keyCode == KeyEvent.VK_UP){
+            if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)){
+                scrollUpRequest();
+            }
+        }else if (keyCode == KeyEvent.VK_DOWN){
+            if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)){
+                scrollDownRequest();
             }
         }
     }

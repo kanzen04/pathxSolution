@@ -28,6 +28,7 @@ public class PathXDataModel extends MiniGameDataModel{
     private PathXMiniGame miniGame;
     private String currentLevel;
     private PathXLevel level;
+    private PathXRecord record;
     
     private Car player;
     //References to all the opposing cars in the game.
@@ -41,6 +42,7 @@ public class PathXDataModel extends MiniGameDataModel{
     
      public PathXDataModel(PathXMiniGame initMiniGame){
         miniGame = initMiniGame;
+        record = new PathXRecord();
         
         cops = new ArrayList();
         bandits = new ArrayList();
@@ -103,5 +105,9 @@ public class PathXDataModel extends MiniGameDataModel{
     @Override
     public void updateDebugText(MiniGame mg) {
         //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public PathXRecord getRecord() {
+        return record;
     }
 }

@@ -14,7 +14,7 @@ import java.util.HashMap;
  * @author Andrew
  */
 public class PathXRecord {
-    private int balance;
+    public int balance;
     private HashMap<String, PathXLevel>  levels;
     private HashMap<String, Boolean> specials;
 
