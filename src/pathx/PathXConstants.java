@@ -42,6 +42,13 @@ public class PathXConstants {
     public static final String LEFT_ARROW_BUTTON_TYPE = "LEFT_ARROW_BUTTON_TYPE";
     public static final String MAP_TYPE = "MAP_TYPE";
     public static final String CLOSE_BUTTON_TYPE = "CLOSE_BUTTON_TYPE";
+    public static final int VIEWPORT_X = 12;
+    public static final int VIEWPORT_Y = 115;
+    public static final int VIEWPORT_WIDTH = 616;
+    public static final int VIEWPORT_HEIGHT = 350;
+    public static final int LEVEL_SELECT_NORTH_PANEL_HEIGHT = 115;
+    public static final int MAP_WIDTH = 1200;
+    public static final int MAP_HEIGHT = 662;
     
     //USED FOR THE SETTINGS SCREEN.
     public static final String SOUND_TOGGLE_BUTTON_TYPE = "SOUND_TOGGLE_BUTTON_TYPE";

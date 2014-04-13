@@ -8,6 +8,8 @@ package pathx.ui;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
@@ -16,6 +18,7 @@ import javax.swing.JFrame;
 import mini_game.MiniGame;
 import mini_game.Sprite;
 import mini_game.SpriteType;
+import mini_game.Viewport;
 import pathx.PathX.PathXPropertyType;
 import pathx.PathXConstants;
 import static pathx.PathXConstants.*;
@@ -44,6 +47,7 @@ public class PathXMiniGame extends MiniGame{
     //files images and other things.
     private PathXErrorHandler errorHandler;
     
+    private Viewport levelSelect;
     //Loads and saves player records.
     //private PathXFileManager fileManager;
     
@@ -69,15 +73,23 @@ public class PathXMiniGame extends MiniGame{
         
         //ACTIVATE ARROW BUTTONS
         guiButtons.get(UP_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(UP_ARROW_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(DOWN_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(DOWN_ARROW_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(RIGHT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(RIGHT_ARROW_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(LEFT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(LEFT_ARROW_BUTTON_TYPE).setEnabled(true);
         
-        //DEACTIVE MAIN MENU BUTTONS
+        //DEACTIVATE MAIN MENU BUTTONS
         guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(PLAY_BUTTON_TYPE).setEnabled(false);
         guiButtons.get(RESET_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(RESET_BUTTON_TYPE).setEnabled(false);
         guiButtons.get(SETTINGS_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(SETTINGS_BUTTON_TYPE).setEnabled(false);
         guiButtons.get(HELP_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(HELP_BUTTON_TYPE).setEnabled(false);
         
         screenState = LEVEL_SELECT_SCREEN_STATE;
         
@@ -92,23 +104,35 @@ public class PathXMiniGame extends MiniGame{
         
         //Activate Menu Buttons
         guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(PLAY_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(RESET_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(RESET_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(SETTINGS_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(SETTINGS_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(HELP_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(HELP_BUTTON_TYPE).setEnabled(true);
         
         //If we are switching from the level select screen or settings screen.
         if (screenState.equals(LEVEL_SELECT_SCREEN_STATE)) {
             //Deactivate level select buttons
             guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(BACK_BUTTON_TYPE).setEnabled(false);
             guiButtons.get(UP_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(UP_ARROW_BUTTON_TYPE).setEnabled(false);
             guiButtons.get(DOWN_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(DOWN_ARROW_BUTTON_TYPE).setEnabled(false);
             guiButtons.get(RIGHT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(RIGHT_ARROW_BUTTON_TYPE).setEnabled(false);
             guiButtons.get(LEFT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(LEFT_ARROW_BUTTON_TYPE).setEnabled(false);
         } else {
             //Deactivate settings screen buttons
             guiButtons.get(SOUND_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(SOUND_TOGGLE_BUTTON_TYPE).setEnabled(false);
             guiButtons.get(MUSIC_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(MUSIC_TOGGLE_BUTTON_TYPE).setEnabled(false);
             guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(BACK_BUTTON_TYPE).setEnabled(false);
         }
         screenState = MENU_SCREEN_STATE;
     }
@@ -121,14 +145,21 @@ public class PathXMiniGame extends MiniGame{
         
         //DEACTIVE MAIN MENU BUTTONS
         guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(PLAY_BUTTON_TYPE).setEnabled(false);
         guiButtons.get(RESET_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(RESET_BUTTON_TYPE).setEnabled(false);
         guiButtons.get(SETTINGS_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(SETTINGS_BUTTON_TYPE).setEnabled(false);
         guiButtons.get(HELP_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(HELP_BUTTON_TYPE).setEnabled(false);
         
         //ACTIVATE SETTINGS BUTTONS
         guiButtons.get(SOUND_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.DISABLED.toString());
+        guiButtons.get(SOUND_TOGGLE_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(MUSIC_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.DISABLED.toString());
+        guiButtons.get(MUSIC_TOGGLE_BUTTON_TYPE).setEnabled(true);
         guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(BACK_BUTTON_TYPE).setEnabled(true);
         
         screenState = SETTINGS_SCREEN_STATE;
     }
@@ -313,6 +344,17 @@ public class PathXMiniGame extends MiniGame{
         sT.addState(MOUSE_OVER.toString(), img);
         s = new Sprite(sT, RIGHT_ARROW_X, RIGHT_ARROW_Y, 0, 0, INVISIBLE.toString());
         guiButtons.put(RIGHT_ARROW_BUTTON_TYPE, s);
+        
+        //THE VIEWPORT
+        initLevelSelectViewport();
+        
+        // KEY LISTENER - LET'S US PROVIDE CUSTOM RESPONSES
+        this.setKeyListener(new KeyAdapter(){
+            public void keyPressed(KeyEvent ke)
+            {   
+                eventHandler.respondToKeyPress(ke.getKeyCode());    
+            }
+        });
     }
     
     private void initGameButtons(){
@@ -502,14 +544,18 @@ public class PathXMiniGame extends MiniGame{
         Sprite leftArrow = guiButtons.get(LEFT_ARROW_BUTTON_TYPE);
         leftArrow.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.scrollLeftRequest();   }
+                {   
+                    eventHandler.scrollLeftRequest();   
+                }
         });
         
         //Scroll right arrow button
         Sprite rightArrow = guiButtons.get(RIGHT_ARROW_BUTTON_TYPE);
         rightArrow.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.scrollRightRequest();  }
+                {   
+                    eventHandler.scrollRightRequest();  
+                }
         });
     }
     
@@ -600,5 +646,19 @@ public class PathXMiniGame extends MiniGame{
         }
         
     }  
+
+    private void initLevelSelectViewport() {
+        //Create the viewport
+        levelSelect = new Viewport();
+        
+        //Specify sizes and location for the viewport
+        levelSelect.setScreenSize(WINDOW_WIDTH, WINDOW_HEIGHT);
+        levelSelect.setViewportSize(VIEWPORT_WIDTH, VIEWPORT_HEIGHT);
+        levelSelect.setGameWorldSize(MAP_WIDTH, MAP_HEIGHT);
+        levelSelect.setNorthPanelHeight(LEVEL_SELECT_NORTH_PANEL_HEIGHT);
+        levelSelect.updateViewportBoundaries();
+        
+        data.setViewport(levelSelect);
+    }
 
 }

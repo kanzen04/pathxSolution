@@ -8,14 +8,19 @@ package pathx.ui;
 
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.image.BufferedImage;
 import java.text.NumberFormat;
 import java.util.Collection;
 import javax.swing.JPanel;
 import mini_game.MiniGame;
 import mini_game.Sprite;
 import mini_game.SpriteType;
+import mini_game.Viewport;
+import pathx.PathX;
+import pathx.PathX.PathXPropertyType;
 import static pathx.PathXConstants.*;
 import pathx.data.PathXDataModel;
+import properties_manager.PropertiesManager;
 
 /**
  *
@@ -28,6 +33,9 @@ public class PathXPanel extends JPanel{
     private PathXDataModel dataModel;
     
     private NumberFormat numberFormatter;
+    private PropertiesManager props = PropertiesManager.getPropertiesManager();
+    
+    private BufferedImage map;
     
     /**
      * This constructor stores the game and data references,
@@ -45,6 +53,8 @@ public class PathXPanel extends JPanel{
         numberFormatter = NumberFormat.getNumberInstance();
         numberFormatter.setMinimumFractionDigits(3);
         numberFormatter.setMaximumFractionDigits(3);
+        map = game.loadImage(props.getProperty(PathXPropertyType.PATH_IMG)
+                + props.getProperty(PathXPropertyType.IMAGE_MAP));
     }
     
     /**
@@ -83,6 +93,9 @@ public class PathXPanel extends JPanel{
 //                renderLevelName(g);
             
             
+            }
+            if (((PathXMiniGame) game).isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)) {
+                renderMap(g);
             }
             
             //RENDER BUTTONS AND DECOR
@@ -128,5 +141,12 @@ public class PathXPanel extends JPanel{
         for (Sprite s : buttonSprites)
             renderSprite(g, s);
         
+    }
+
+    private void renderMap(Graphics g) {
+        Viewport vp = dataModel.getViewport();
+        int vpx = vp.getViewportX();
+        int vpy = vp.getViewportY();
+        g.drawImage(map, VIEWPORT_X, VIEWPORT_Y, VIEWPORT_X + VIEWPORT_WIDTH, VIEWPORT_Y + VIEWPORT_HEIGHT, vpx, vpy, vpx + VIEWPORT_WIDTH , vpy + VIEWPORT_HEIGHT, this);
     }
 }

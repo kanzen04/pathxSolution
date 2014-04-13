@@ -6,9 +6,12 @@
 
 package pathx.ui;
 
+import java.awt.event.KeyEvent;
 import mini_game.MiniGameDataModel;
 import mini_game.Sprite;
+import mini_game.Viewport;
 import pathx.PathXConstants;
+import static pathx.PathXConstants.LEVEL_SELECT_SCREEN_STATE;
 import pathx.data.PathXLevel;
 
 /**
@@ -20,10 +23,12 @@ public class PathXEventHandler {
     
     PathXMiniGame game;
     MiniGameDataModel dataModel;
+    Viewport vp;
     
     public PathXEventHandler(PathXMiniGame initGame){
         game = initGame;
         dataModel = initGame.getDataModel();
+        vp = dataModel.getViewport();
     }
     
     /**
@@ -92,22 +97,30 @@ public class PathXEventHandler {
     }
     //Will either scroll the level select or game level view.
     public void scrollUpRequest(){
-        
+        if (vp.getMinViewportY() < vp.getViewportY() - 2) {
+            dataModel.getViewport().scroll(0, -2);
+        }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollDownRequest(){
-        
+        if (vp.getMaxViewportY() > vp.getViewportY() + 2) {
+            dataModel.getViewport().scroll(0, 2);
+        }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollLeftRequest(){
-        
+        if (vp.getMinViewportX() < vp.getViewportX() - 2) {
+            dataModel.getViewport().scroll(-2, 0);
+        }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollRightRequest(){
-        
+        if (vp.getMaxViewportX() > vp.getViewportX() + 2) {
+            dataModel.getViewport().scroll(2, 0);
+        }
     }
     
     public void toggleSoundRequest(){
@@ -200,5 +213,14 @@ public class PathXEventHandler {
     
     public void godMode(){
         
+    }
+
+    void respondToKeyPress(int keyCode) {
+        //Right key press on level select screen
+        if (keyCode == KeyEvent.VK_RIGHT){
+            if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)){
+                scrollRightRequest();
+            }
+        }
     }
 }
