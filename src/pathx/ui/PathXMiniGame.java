@@ -11,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
+import java.util.Iterator;
 import javax.swing.JFrame;
 import mini_game.MiniGame;
 import mini_game.Sprite;
@@ -30,7 +31,7 @@ import properties_manager.PropertiesManager;
 public class PathXMiniGame extends MiniGame{
     
     //Manages game data including the player's record, different cars in-game,
-    private PathXDataModel dataModel;
+    //private PathXDataModel dataModel;
     
     //Holds the stats for the current player including balance, unlocked levels,
     //and unlocked specials.
@@ -44,11 +45,93 @@ public class PathXMiniGame extends MiniGame{
     private PathXErrorHandler errorHandler;
     
     //Loads and saves player records.
-    private PathXFileManager fileManager;
+    //private PathXFileManager fileManager;
     
     //Indicates the current screen being displayed.
     String screenState;
     
+    public PathXErrorHandler getErrorHandler(){
+        return errorHandler;
+    }
+    
+    public boolean isCurrentScreenState(String screenState){
+        return this.screenState.equals(screenState);
+    }
+    
+    public void switchToLevelSelectScreen(){
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        
+        // CHANGE THE BACKGROUND
+        guiDecor.get(BACKGROUND_TYPE).setState(LEVEL_SELECT_SCREEN_STATE);
+        
+        //ACTIVE NORTH PANEL CONTROLS
+        guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        
+        //ACTIVATE ARROW BUTTONS
+        guiButtons.get(UP_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(DOWN_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(RIGHT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(LEFT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        
+        //DEACTIVE MAIN MENU BUTTONS
+        guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(RESET_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(SETTINGS_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(HELP_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        
+        screenState = LEVEL_SELECT_SCREEN_STATE;
+        
+        //SONGS
+    }
+    
+    public void switchToMainMenu(){
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        
+        // CHANGE THE BACKGROUND
+        guiDecor.get(BACKGROUND_TYPE).setState(MENU_SCREEN_STATE);
+        
+        //Activate Menu Buttons
+        guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(RESET_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(SETTINGS_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        guiButtons.get(HELP_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        
+        //If we are switching from the level select screen or settings screen.
+        if (screenState.equals(LEVEL_SELECT_SCREEN_STATE)) {
+            //Deactivate level select buttons
+            guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(UP_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(DOWN_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(RIGHT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(LEFT_ARROW_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        } else {
+            //Deactivate settings screen buttons
+            guiButtons.get(SOUND_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(MUSIC_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+            guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        }
+        screenState = MENU_SCREEN_STATE;
+    }
+    
+    public void switchToSettingsScreen(){
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        
+        // CHANGE THE BACKGROUND
+        guiDecor.get(BACKGROUND_TYPE).setState(SETTINGS_SCREEN_STATE);
+        
+        //DEACTIVE MAIN MENU BUTTONS
+        guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(RESET_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(SETTINGS_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        guiButtons.get(HELP_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
+        
+        //ACTIVATE SETTINGS BUTTONS
+        guiButtons.get(SOUND_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.DISABLED.toString());
+        guiButtons.get(MUSIC_TOGGLE_BUTTON_TYPE).setState(PathXSpriteState.DISABLED.toString());
+        guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
+        
+        screenState = SETTINGS_SCREEN_STATE;
+    }
     @Override
     public void initData(){
         //Initialize error handlier
@@ -61,7 +144,7 @@ public class PathXMiniGame extends MiniGame{
         //record = fileManager.loadRecord();
         
         //Initialize the data model.
-        dataModel = new PathXDataModel(this);
+        data = new PathXDataModel(this);
     }
 
     @Override
@@ -98,7 +181,7 @@ public class PathXMiniGame extends MiniGame{
         sT.addState(LEVEL_SELECT_SCREEN_STATE, img);
         img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BACKGROUND_GAME));
         sT.addState(GAME_SCREEN_STATE, img);
-        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BACKGROUND_LEVEL));
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BACKGROUND_SETTINGS));
         sT.addState(SETTINGS_SCREEN_STATE, img);
         
         s = new Sprite(sT, 0, 0, 0, 0, MENU_SCREEN_STATE);
@@ -107,6 +190,7 @@ public class PathXMiniGame extends MiniGame{
         initMenuButtons();
         initLevelSelectButtons();
         initGameButtons();
+        initSettingsButtons();
                 
     }
     
@@ -163,9 +247,9 @@ public class PathXMiniGame extends MiniGame{
         
         //QUIT BUTTON
         sT = new SpriteType(QUIT_BUTTON_TYPE);
-        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_QUIT_BUTTON));
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_QUIT));
         sT.addState(VISIBLE.toString(), img);
-        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_QUIT_BUTTON_MOUSE_OVER));
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_QUIT_MOUSE_OVER));
         sT.addState(MOUSE_OVER.toString(), img);
         x = MAIN_QUIT_BUTTON_X;
         y = MAIN_QUIT_BUTTON_Y;
@@ -200,6 +284,7 @@ public class PathXMiniGame extends MiniGame{
         sT = new SpriteType(UP_ARROW_BUTTON_TYPE);
         img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_UP_ARROW));
         sT.addState(VISIBLE.toString(), img);
+        sT.addState(MOUSE_OVER.toString(), img);
         x = UP_ARROW_X;
         y = UP_ARROW_Y;
         s = new Sprite(sT, x, y, 0, 0, INVISIBLE.toString());
@@ -209,6 +294,7 @@ public class PathXMiniGame extends MiniGame{
         sT = new SpriteType(DOWN_ARROW_BUTTON_TYPE);
         img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_DOWN_ARROW));
         sT.addState(VISIBLE.toString(), img);
+        sT.addState(MOUSE_OVER.toString(), img);
         s = new Sprite(sT, DOWN_ARROW_X, DOWN_ARROW_Y, 0, 0, INVISIBLE.toString());
         guiButtons.put(DOWN_ARROW_BUTTON_TYPE, s);
         
@@ -216,6 +302,7 @@ public class PathXMiniGame extends MiniGame{
         sT = new SpriteType(LEFT_ARROW_BUTTON_TYPE);
         img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_LEFT_ARROW));
         sT.addState(VISIBLE.toString(), img);
+        sT.addState(MOUSE_OVER.toString(), img);
         s = new Sprite(sT, LEFT_ARROW_X, LEFT_ARROW_Y, 0, 0, INVISIBLE.toString());
         guiButtons.put(LEFT_ARROW_BUTTON_TYPE, s);
         
@@ -223,6 +310,7 @@ public class PathXMiniGame extends MiniGame{
         sT = new SpriteType(RIGHT_ARROW_BUTTON_TYPE);
         img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_RIGHT_ARROW));
         sT.addState(VISIBLE.toString(), img);
+        sT.addState(MOUSE_OVER.toString(), img);
         s = new Sprite(sT, RIGHT_ARROW_X, RIGHT_ARROW_Y, 0, 0, INVISIBLE.toString());
         guiButtons.put(RIGHT_ARROW_BUTTON_TYPE, s);
     }
@@ -251,9 +339,9 @@ public class PathXMiniGame extends MiniGame{
         
         //QUIT BUTTON
         sT = new SpriteType(GAME_QUIT_BUTTON_TYPE);
-        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_QUIT_BUTTON));
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_QUIT));
         sT.addState(VISIBLE.toString(), img);
-        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_QUIT_BUTTON_MOUSE_OVER));
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_QUIT_MOUSE_OVER));
         sT.addState(MOUSE_OVER.toString(), img);
         x = PathXConstants.GAME_QUIT_BUTTON_X;
         y = PathXConstants.GAME_QUIT_BUTTON_Y;
@@ -297,6 +385,40 @@ public class PathXMiniGame extends MiniGame{
         
     }
 
+    private void initSettingsButtons(){
+        // WE'LL USE AND REUSE THESE FOR LOADING STUFF
+        BufferedImage img;
+        float x, y;
+        SpriteType sT;
+        Sprite s;
+        
+        PropertiesManager props = PropertiesManager.getPropertiesManager();
+        String imgPath = props.getProperty(PathXPropertyType.PATH_IMG);
+        
+        //Settings Sound Toggle
+        sT = new SpriteType(SOUND_TOGGLE_BUTTON_TYPE);
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_TOGGLE_OFF));
+        sT.addState(PathXSpriteState.DISABLED.toString(), img);
+        sT.addState(PathXSpriteState.MOUSE_OVER.toString(), img);
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_TOGGLE_ON));
+        sT.addState(PathXSpriteState.ENABLED.toString(), img);
+        x = PathXConstants.SOUND_TOGGLE_X;
+        y = PathXConstants.SOUND_TOGGLE_Y;
+        s = new Sprite(sT, x, y, 0, 0, INVISIBLE.toString());
+        guiButtons.put(SOUND_TOGGLE_BUTTON_TYPE, s);
+        
+        //Settings Music Toggle
+        sT = new SpriteType(MUSIC_TOGGLE_BUTTON_TYPE);
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_TOGGLE_OFF));
+        sT.addState(PathXSpriteState.DISABLED.toString(), img);
+        sT.addState(PathXSpriteState.MOUSE_OVER.toString(), img);
+        img = loadImage(imgPath + props.getProperty(PathXPropertyType.IMAGE_BUTTON_TOGGLE_ON));
+        sT.addState(PathXSpriteState.ENABLED.toString(), img);
+        x = PathXConstants.MUSIC_TOGGLE_X;
+        y = PathXConstants.MUSIC_TOGGLE_Y;
+        s = new Sprite(sT, x, y, 0, 0, INVISIBLE.toString());
+        guiButtons.put(MUSIC_TOGGLE_BUTTON_TYPE, s);
+    }
     @Override
     public void initGUIHandlers() {
          // WE'LL RELAY UI EVENTS TO THIS OBJECT FOR HANDLING
@@ -312,6 +434,7 @@ public class PathXMiniGame extends MiniGame{
         initMainMenuHandlers();
         initLevelSelectHandlers();
         initGameScreenHandlers();
+        initSettingsHandlers();
     }
 
     private void initMainMenuHandlers() {
@@ -340,7 +463,9 @@ public class PathXMiniGame extends MiniGame{
         Sprite helpButton = guiButtons.get(HELP_BUTTON_TYPE);
         settingsButton.setActionListener(new ActionListener(){
             public void actionPerformed(ActionEvent ae)
-                {   eventHandler.switchToSettingsMenu();    }
+                {   
+                    eventHandler.switchToSettingsMenu();    
+                }
         });
         
         //Set quit button response
@@ -410,7 +535,29 @@ public class PathXMiniGame extends MiniGame{
         });
         
         //SPECIALS EVENT HANDLERS GO HERE
-    }   
+    }
+    
+    private void initSettingsHandlers(){
+        //Sound toggle
+        Sprite soundToggle = guiButtons.get(SOUND_TOGGLE_BUTTON_TYPE);
+        soundToggle.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae)
+                {   
+                    eventHandler.toggleSoundRequest();  
+                }
+        });
+        
+        //Music Toggle
+        Sprite musicToggle = guiButtons.get(MUSIC_TOGGLE_BUTTON_TYPE);
+        musicToggle.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae)
+                {   
+                    eventHandler.toggleMusicRequest();  
+                }
+        });
+        
+        //TODO Game Speed Slider
+    }
     
     /**
      * Called when a game is started.
@@ -424,7 +571,34 @@ public class PathXMiniGame extends MiniGame{
 
     @Override
     public void updateGUI() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+        // GO THROUGH THE VISIBLE BUTTONS TO TRIGGER MOUSE OVERS
+        Iterator<Sprite> buttonsIt = guiButtons.values().iterator();
+        while (buttonsIt.hasNext())
+        {
+            Sprite button = buttonsIt.next();
+            
+            // ARE WE ENTERING A BUTTON?
+            if (button.getState().equals(PathXSpriteState.VISIBLE.toString()))
+            {
+                if (button.containsPoint(data.getLastMouseX(), data.getLastMouseY()))
+                {
+                    button.setState(PathXSpriteState.MOUSE_OVER.toString());
+                }
+            }
+            // ARE WE EXITING A BUTTON?
+            else if (button.getState().equals(PathXSpriteState.MOUSE_OVER.toString()))
+            {
+                 if (!button.containsPoint(data.getLastMouseX(), data.getLastMouseY()))
+                {
+                    button.setState(PathXSpriteState.VISIBLE.toString());
+                }
+            }
+//            Is it a settings toggle?
+//            else if (button.getState().equals(PathXSpriteState.DISABLED) || 
+//                    button.getState().equals(PathXSpriteState.ENABLED))
+        }
+        
     }  
 
 }

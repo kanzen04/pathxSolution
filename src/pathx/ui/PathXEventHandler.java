@@ -7,6 +7,8 @@
 package pathx.ui;
 
 import mini_game.MiniGameDataModel;
+import mini_game.Sprite;
+import pathx.PathXConstants;
 import pathx.data.PathXLevel;
 
 /**
@@ -39,11 +41,16 @@ public class PathXEventHandler {
     }
     
     public void switchToMainMenu(){
-        
+        if (game.isCurrentScreenState(PathXConstants.LEVEL_SELECT_SCREEN_STATE) ||
+                game.isCurrentScreenState(PathXConstants.SETTINGS_SCREEN_STATE)){
+            game.switchToMainMenu();
+        }
     }
     
     public void switchToLevelSelectScreen(){
-        
+        if (game.isCurrentScreenState(PathXConstants.MENU_SCREEN_STATE)){
+            game.switchToLevelSelectScreen();
+        }
     }
     
     //Resets the player's record.
@@ -52,7 +59,9 @@ public class PathXEventHandler {
     }
     
     public void switchToSettingsMenu(){
-        
+        if (game.isCurrentScreenState(PathXConstants.MENU_SCREEN_STATE)){
+            game.switchToSettingsScreen();
+        }
     }
     
     public void switchToHelpView(){
@@ -61,7 +70,7 @@ public class PathXEventHandler {
     
     //Should save the player record before quitting.
     public void quitGameRequest(){
-        
+        respondToExitRequest();
     }
     
     public void displayLevelInfoRequest(PathXLevel level){
@@ -102,11 +111,21 @@ public class PathXEventHandler {
     }
     
     public void toggleSoundRequest(){
-        
+        //TODO Toggle the game's sound
+        Sprite soundToggle = game.getGUIButtons().get(PathXConstants.SOUND_TOGGLE_BUTTON_TYPE);
+        if (soundToggle.getState().equals(PathXSpriteState.ENABLED.toString()))
+            soundToggle.setState(PathXSpriteState.DISABLED.toString());
+        else
+            soundToggle.setState(PathXSpriteState.ENABLED.toString());
     }
     
     public void toggleMusicRequest(){
-        
+        //TODO Toggle the game's music
+        Sprite musicToggle = game.getGUIButtons().get(PathXConstants.MUSIC_TOGGLE_BUTTON_TYPE);
+        if (musicToggle.getState().equals(PathXSpriteState.ENABLED.toString()))
+            musicToggle.setState(PathXSpriteState.DISABLED.toString());
+        else
+            musicToggle.setState(PathXSpriteState.ENABLED.toString());
     }
     
     public void changeGameSpeed(double multiplier){

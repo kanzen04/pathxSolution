@@ -48,5 +48,8 @@ public enum PathXSpriteState {
     
     VISIBLE,
     INVISIBLE,
-    MOUSE_OVER
+    MOUSE_OVER,
+    
+    ENABLED,
+    DISABLED
 }

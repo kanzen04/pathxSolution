@@ -6,13 +6,17 @@
 
 package pathx.data;
 
+import java.awt.Graphics;
 import java.util.ArrayList;
 import java.util.HashMap;
 import mini_game.MiniGame;
 import mini_game.MiniGameDataModel;
+import mini_game.Sprite;
 import pathx.ui.BanditCar;
+import pathx.ui.Car;
 import pathx.ui.CopCar;
 import pathx.ui.PathXMiniGame;
+import pathx.ui.PathXSpriteState;
 import pathx.ui.ZombieCar;
 
 /**
@@ -23,7 +27,9 @@ public class PathXDataModel extends MiniGameDataModel{
     
     private PathXMiniGame miniGame;
     private String currentLevel;
+    private PathXLevel level;
     
+    private Car player;
     //References to all the opposing cars in the game.
     private ArrayList<CopCar> cops;
     private ArrayList<BanditCar> bandits;
@@ -77,18 +83,25 @@ public class PathXDataModel extends MiniGameDataModel{
         
     }
 
+    /**
+     * Called when a level is started.
+     *
+     * @param game
+     */
     @Override
     public void reset(MiniGame mg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+//        Sprite s = player.getSprite();
+//        player = new Car(s, level.getStartNode(), PathXSpriteState.STOPPED.toString());
+        
     }
 
     @Override
     public void updateAll(MiniGame mg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
     }
 
     @Override
     public void updateDebugText(MiniGame mg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }

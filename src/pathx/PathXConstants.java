@@ -44,7 +44,8 @@ public class PathXConstants {
     public static final String CLOSE_BUTTON_TYPE = "CLOSE_BUTTON_TYPE";
     
     //USED FOR THE SETTINGS SCREEN.
-    public static final String TOGGLE_BUTTON_TYPE = "TOGGLE_BUTTON_TYPE";
+    public static final String SOUND_TOGGLE_BUTTON_TYPE = "SOUND_TOGGLE_BUTTON_TYPE";
+    public static final String MUSIC_TOGGLE_BUTTON_TYPE = "MUSIC_TOGGLE_BUTTON_TYPE";
     
     //Game Screen
     public static final String START_BUTTON_TYPE = "START_BUTTON_TYPE";
@@ -98,7 +99,7 @@ public class PathXConstants {
     
     public static final int LEVEL_SELECT_QUIT_BUTTON_X = MAIN_QUIT_BUTTON_X;
     public static final int LEVEL_SELECT_QUIT_BUTTON_Y = MAIN_QUIT_BUTTON_Y;
-    public static final int LEVEL_SELECT_BACK_BUTTON_X = LEVEL_SELECT_QUIT_BUTTON_X - 60;
+    public static final int LEVEL_SELECT_BACK_BUTTON_X = LEVEL_SELECT_QUIT_BUTTON_X - 5;
     public static final int LEVEL_SELECT_BALANCE_X = 320;
     public static final int LEVEL_SELECT_BALANCE_Y = 40;
     public static final int LEVEL_SELECT_GOAL_X = 275;
@@ -110,9 +111,14 @@ public class PathXConstants {
     public static final int UP_ARROW_X = 40;
     public static final int UP_ARROW_Y = 325;
     public static final int RIGHT_ARROW_X = 70;
-    public static final int RIGHT_ARROW_Y = 325;
+    public static final int RIGHT_ARROW_Y = 355;
     public static final int DOWN_ARROW_X = 40;
     public static final int DOWN_ARROW_Y = 385;
+    
+    public static final int SOUND_TOGGLE_X = 220;
+    public static final int SOUND_TOGGLE_Y = 170;
+    public static final int MUSIC_TOGGLE_X = SOUND_TOGGLE_X;
+    public static final int MUSIC_TOGGLE_Y = 230;
     
     public static final int GAME_BACK_BUTTON_X = 10;
     public static final int GAME_BACK_BUTTON_Y = 30;
@@ -137,6 +143,8 @@ public class PathXConstants {
     public static final int OVERLAY_LEVEL_DIALOG_Y = OVERLAY_CITY_LABEL_Y + 50;
     public static final int OVERLAY_BUTTON_CLOSE_X = GAME_OVERLAY_X + 150;
     public static final int OVERLAY_BUTTON_CLOSE_Y = GAME_OVERLAY_Y + 200;
+    
+    
     
     // FONTS USED DURING FOR TEXTUAL GAME DISPLAYS
     public static final Font FONT_TEXT_DISPLAY = new Font("Helvetica", Font.BOLD, 48);

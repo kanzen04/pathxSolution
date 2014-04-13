@@ -6,6 +6,8 @@
 
 package pathx.data;
 
+import pathx.ui.Node;
+
 /**
  * This class will be used to hold information for every level in the pathX 
  * Mini-Game. Notably, the graph data structure will be stored here.
@@ -18,6 +20,7 @@ public class PathXLevel {
     //Whatever graph implementation I'll be using.
     //private Graph graph;
     private boolean completed;
+    private Node startNode;
     
 //    public ArrayList<Node> findPath(Node from, Node to){{
 //        
@@ -26,4 +29,8 @@ public class PathXLevel {
 //    public boolean hasNode(Node node){
 //        
 //    }
+    
+    public Node getStartNode(){
+        return startNode;
+    }
 }

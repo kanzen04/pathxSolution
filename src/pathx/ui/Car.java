@@ -50,6 +50,10 @@ public class Car {
         currentState = state;
     }
     
+    public Sprite getSprite(){
+        return s;
+    }
+    
     public void changeDestination(ArrayList<Node> path){
         this.path = path;
         pathIndex = 0;

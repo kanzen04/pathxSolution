@@ -6,6 +6,7 @@
 
 package pathx;
 
+import mini_game.MiniGame;
 import properties_manager.PropertiesManager;
 import static pathx.PathXConstants.*;
 import pathx.ui.PathXErrorHandler;
@@ -36,7 +37,7 @@ public class PathX {
             
             // NOW WE CAN LOAD THE UI, WHICH WILL USE ALL THE FLAVORED CONTENT
             String appTitle = props.getProperty(PathXPropertyType.TEXT_TITLE_BAR);
-            miniGame.initMiniGame(appTitle, FPS, WINDOW_WIDTH, WINDOW_HEIGHT);
+            miniGame.initMiniGame(appTitle, FPS, WINDOW_WIDTH + 4, WINDOW_HEIGHT + 26);
             
             miniGame.startGame();
         }
@@ -60,8 +61,8 @@ public class PathX {
         // sorting_hat_properties.xml
 
         /* IMAGE FILE NAMES */
-        IMAGE_QUIT_BUTTON,
-        IMAGE_QUIT_BUTTON_MOUSE_OVER,
+        IMAGE_BUTTON_QUIT,
+        IMAGE_BUTTON_QUIT_MOUSE_OVER,
         IMAGE_WINDOW_ICON,
         
         //Splash images
