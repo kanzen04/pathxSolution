@@ -15,6 +15,7 @@ import pathx.ui.PathXMiniGame;
 import properties_manager.PropertiesManager;
 import pathx.PathX.PathXPropertyType;
 import pathx.data.PathXLevel;
+import pathx.ui.PathXLevelSprite;
 
 /**
  *
@@ -46,10 +47,13 @@ public class PathXFileManager {
         
         //Create a HashMap to store the newly created PathXLevels
         HashMap<String, PathXLevel> levels = new HashMap();
+        ArrayList<PathXLevelSprite> levelSprites = new ArrayList();
         
         //Iterate through the XML file to find details on each level available.
         //These details are loaded into a new PathXLevel and then put into the 
         //levels HashMap.
+        //Another ArrayList of PathXLevelSprites will also be filled. These sprites
+        //are used for level select map rendering.
         ArrayList<String> levelDetails = props.getPropertyOptionsList(PathXPropertyType.LEVEL_OPTIONS);
         StringTokenizer st;
         for (String s : levelDetails){
@@ -61,9 +65,14 @@ public class PathXFileManager {
             int yPos = Integer.parseInt(st.nextToken().trim());
             PathXLevel level = new PathXLevel(levelName, reward, xPos, yPos, false, data);
             levels.put(levelName, level);
+            
+            PathXLevelSprite levelSprite = new PathXLevelSprite(level, xPos, yPos, game);
+            levelSprites.add(levelSprite);
         }
         
         //Give the HashMap of levels to the DataModel.
         data.setLevels(levels);
+        //Give the ArrayList of the associated sprites to the DataModel
+        data.setLevelSprites(levelSprites);
     }
 }

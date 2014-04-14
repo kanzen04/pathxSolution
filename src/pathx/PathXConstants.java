@@ -87,7 +87,7 @@ public class PathXConstants {
     public static final String LEVEL_SELECT_SCREEN_STATE = "LEVEL_SELECT_SCREEN_STATE";
     public static final String SETTINGS_SCREEN_STATE = "SETTINGS_SCREEN_STATE";
     public static final String GAME_SCREEN_STATE = "GAME_SCREEN_STATE";
-    
+    public static final String HELP_SCREEN_STATE = "HELP_SCREEN_STATE";
     // ANIMATION SPEED
     public static final int FPS = 50;
     // UI CONTROL SIZE AND POSITION SETTINGS
@@ -116,36 +116,36 @@ public class PathXConstants {
     public static final int LEVEL_SELECT_GOAL_Y = 86;
     public static final int LEVEL_SELECT_CITY_X = 460;
     public static final int LEVEL_SELECT_CITY_Y = 430;
-    public static final int LEFT_ARROW_X = 10;
-    public static final int LEFT_ARROW_Y = 355;
-    public static final int UP_ARROW_X = 40;
-    public static final int UP_ARROW_Y = 325;
-    public static final int RIGHT_ARROW_X = 70;
-    public static final int RIGHT_ARROW_Y = 355;
-    public static final int DOWN_ARROW_X = 40;
-    public static final int DOWN_ARROW_Y = 385;
+    public static final int LEFT_ARROW_X = 30;
+    public static final int LEFT_ARROW_Y = 370;
+    public static final int UP_ARROW_X = 60;
+    public static final int UP_ARROW_Y = 340;
+    public static final int RIGHT_ARROW_X = 90;
+    public static final int RIGHT_ARROW_Y = LEFT_ARROW_Y;
+    public static final int DOWN_ARROW_X = UP_ARROW_X;
+    public static final int DOWN_ARROW_Y = 400;
     
     public static final int SOUND_TOGGLE_X = 220;
     public static final int SOUND_TOGGLE_Y = 170;
     public static final int MUSIC_TOGGLE_X = SOUND_TOGGLE_X;
     public static final int MUSIC_TOGGLE_Y = 230;
     
-    public static final int GAME_BACK_BUTTON_X = 10;
+    public static final int GAME_BACK_BUTTON_X = 20;
     public static final int GAME_BACK_BUTTON_Y = 30;
-    public static final int GAME_QUIT_BUTTON_X = 70;
+    public static final int GAME_QUIT_BUTTON_X = 80;
     public static final int GAME_QUIT_BUTTON_Y = 30;
-    public static final int GAME_START_BUTTON_X = 10;
+    public static final int GAME_START_BUTTON_X = 23;
     public static final int GAME_START_BUTTON_Y = 100;
     public static final int GAME_SPECIAL_WIDTH = 30;
-    public static final int GAME_SPECIAL_LENGTH = 30;
-    public static final int FIRST_SPECIAL_X = 10;
-    public static final int FIRST_SPECIAL_Y = 185;
+    public static final int GAME_SPECIAL_HEIGHT = 30;
+    public static final int FIRST_SPECIAL_X = 15;
+    public static final int FIRST_SPECIAL_Y = 187;
     public static final int GAME_CITY_LABEL_X = 165;
     public static final int GAME_CITY_LABEL_Y = 25;
     public static final int GAME_REWARD_LABEL_X = 165;
     public static final int GAME_REWARD_LABEL_Y = 55;
     
-    public static final int GAME_OVERLAY_X = 120;
+    public static final int GAME_OVERLAY_X = 200;
     public static final int GAME_OVERLAY_Y = 90;
     public static final int OVERLAY_CITY_LABEL_X = GAME_OVERLAY_X + 20;
     public static final int OVERLAY_CITY_LABEL_Y = GAME_OVERLAY_Y + 20;

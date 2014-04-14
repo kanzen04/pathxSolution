@@ -8,6 +8,7 @@ package pathx.data;
 
 import java.awt.Graphics;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import mini_game.MiniGame;
 import mini_game.MiniGameDataModel;
@@ -15,6 +16,7 @@ import mini_game.Sprite;
 import pathx.ui.BanditCar;
 import pathx.ui.Car;
 import pathx.ui.CopCar;
+import pathx.ui.PathXLevelSprite;
 import pathx.ui.PathXMiniGame;
 import pathx.ui.PathXSpriteState;
 import pathx.ui.ZombieCar;
@@ -39,6 +41,8 @@ public class PathXDataModel extends MiniGameDataModel{
     //Used to check unlocked specials and unlocked/completed levels.
     private HashMap<String, Boolean> specials;
     private HashMap<String, PathXLevel> levels;
+    
+    private ArrayList<PathXLevelSprite> levelSprites;
     
      public PathXDataModel(PathXMiniGame initMiniGame){
         miniGame = initMiniGame;
@@ -130,5 +134,13 @@ public class PathXDataModel extends MiniGameDataModel{
     public void updateRecord(){
         record.setLevels(levels);
         record.setSpecials(specials);
+    }
+    
+    public void setLevelSprites(ArrayList<PathXLevelSprite> levelSprites) {
+        this.levelSprites = levelSprites;
+    }
+
+    public ArrayList<PathXLevelSprite> getLevelSprites() {
+        return levelSprites;
     }
 }

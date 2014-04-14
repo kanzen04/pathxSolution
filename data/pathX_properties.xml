@@ -64,16 +64,16 @@
         <property name="IMAGE_EMPTY_GAS_ACTIVE"			value="./EmptyGasActive.png"></property>
         <property name="IMAGE_CLOSE_ROAD"				value="./CloseRoad.png"></property>
         <property name="IMAGE_CLOSE_ROAD_ACTIVE"		value="./CloseRoadActive.png"></property>
-        <property name="IMAGE_CLOSE_NODE"				value="./CloseNode.png"></property>
-        <property name="IMAGE_CLOSE_NODE_ACTIVE"		value="./CloseNodeActive.png"></property>
-        <property name="IMAGE_OPEN_NODE"				value="./OpenNode.png"></property>
-        <property name="IMAGE_OPEN_NODE_ACTIVE"			value="./OpenNodeActive.png"></property>
+        <property name="IMAGE_CLOSE_NODE"				value="./CloseIntersection.png"></property>
+        <property name="IMAGE_CLOSE_NODE_ACTIVE"		value="./CloseIntersectionActive.png"></property>
+        <property name="IMAGE_OPEN_NODE"				value="./OpenIntersection.png"></property>
+        <property name="IMAGE_OPEN_NODE_ACTIVE"			value="./OpenIntersectionActive.png"></property>
         <property name="IMAGE_STEALING"					value="./Stealing.png"></property>
         <property name="IMAGE_STEALING_ACTIVE"			value="./StealingActive.png"></property>
         <property name="IMAGE_MIND_CONTROL"				value="./MindControl.png"></property>
         <property name="IMAGE_MIND_CONTROL_ACTIVE"		value="./MindControlActive.png"></property>
         <property name="IMAGE_INTANGIBILITY"			value="./Intangibility.png"></property>
-        <property name="IMAGE_INTANGIBILITY_ACTIVE"		value="./IntangiblityActive.png"></property>
+        <property name="IMAGE_INTANGIBILITY_ACTIVE"		value="./IntangibilityActive.png"></property>
         <property name="IMAGE_MINDLESS_TERROR"			value="./MindlessTerror.png"></property>
         <property name="IMAGE_MINDLESS_TERROR_ACTIVE"	value="./MindlessTerrorActive.png"></property>
         <property name="IMAGE_FLYING"					value="./Flying.png"></property>
@@ -82,11 +82,13 @@
         <property name="IMAGE_GOD_MODE_ACTIVE"			value="./GodModeActive.png"></property>
 
         <property name="IMAGE_POPUP_BACKGROUND"         value="./GameOverlay.png"></property>
-        <property name="IMAGE_BUTTON_POPUP_CLOSE"       value="./ButtonClose.png"></property>
-        <property name="IMAGE_BUTTON_POPUP_CLOSE_MOUSE_OVER"  value="./ButtonCloseMouseOver.png"></property>
+        <property name="IMAGE_BUTTON_CLOSE"             value="./ButtonClose.png"></property>
+        <property name="IMAGE_BUTTON_CLOSE_MOUSE_OVER"  value="./ButtonCloseMouseOver.png"></property>
         <property name="IMAGE_BACKGROUND_SETTINGS"      value="./SettingsBackground.png"></property>
         <property name="IMAGE_BUTTON_TOGGLE_OFF"        value="./ButtonToggleOff.png"></property>
         <property name="IMAGE_BUTTON_TOGGLE_ON"         value="./ButtonToggleOn.png"></property>
+
+        <property name="IMAGE_BACKGROUND_HELP"         value="./HelpBackground.png"></property>
 
 
         <!-- ALL THE TEXT TO BE DISPLAYED -->

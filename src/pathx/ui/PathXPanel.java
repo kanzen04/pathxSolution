@@ -108,6 +108,7 @@ public class PathXPanel extends JPanel{
             if (((PathXMiniGame) game).isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)) {
                 renderMap(g);
                 renderLevelSelectStats(g);
+                updateLevelSprites();
             }
             
             //RENDER BUTTONS AND DECOR
@@ -162,33 +163,34 @@ public class PathXPanel extends JPanel{
         g.drawImage(map, VIEWPORT_X, VIEWPORT_Y, VIEWPORT_X + VIEWPORT_WIDTH, VIEWPORT_Y + VIEWPORT_HEIGHT, vpx, vpy, vpx + VIEWPORT_WIDTH , vpy + VIEWPORT_HEIGHT, this);
         
         //Render level nodes
-        Collection<PathXLevel> levels = dataModel.getLevels().values();
-        for (PathXLevel level : levels){
-            int x = level.getxPos();
-            int y = level.getyPos();
-            
-            // if the level is completed draw a green circle at the appropriate 
-            //coordinates otherwise draw a red circle
-            if (level.isCompleted()){
-                SpriteType sT = new SpriteType(PathXConstants.COMPLETE_LEVEL_TYPE);
-                sT.addState("VISIBLE", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.COMPLETE_LEVEL_TYPE));
-                sT.addState("MOUSE_OVER", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.COMPLETE_LEVEL_TYPE));
-
-                Sprite s = new Sprite(sT, x, y, 0, 0, "VISIBLE");
-//                s.setActionListener(new ActionListener(){
-//                    public void ActionPerformed()
-//                    {   eventHandler.
-//                });
-                renderSprite(g, s);
-            }else{
-                SpriteType sT = new SpriteType(PathXConstants.INCOMPLETE_LEVEL_TYPE);
-                sT.addState("VISIBLE", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.INCOMPLETE_LEVEL_TYPE));
-                sT.addState("MOUSE_OVER", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.INCOMPLETE_LEVEL_TYPE));
-
-                Sprite s = new Sprite(sT, x, y, 0, 0, "VISIBLE");
-                renderSprite(g, s);
-            }
-        }
+//        Collection<PathXLevel> levels = dataModel.getLevels().values();
+//        for (PathXLevel level : levels){
+//            int x = level.getxPos();
+//            int y = level.getyPos();
+//            
+//            // if the level is completed draw a green circle at the appropriate 
+//            //coordinates otherwise draw a red circle
+//            if (level.isCompleted()){
+//                SpriteType sT = new SpriteType(PathXConstants.COMPLETE_LEVEL_TYPE);
+//                sT.addState("VISIBLE", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.COMPLETE_LEVEL_TYPE));
+//                sT.addState("MOUSE_OVER", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.COMPLETE_LEVEL_TYPE));
+//
+//                Sprite s = new Sprite(sT, x, y, 0, 0, "VISIBLE");
+//                s
+////                s.setActionListener(new ActionListener(){
+////                    public void ActionPerformed()
+////                    {   eventHandler.
+////                });
+//                renderSprite(g, s);
+//            }else{
+//                SpriteType sT = new SpriteType(PathXConstants.INCOMPLETE_LEVEL_TYPE);
+//                sT.addState("VISIBLE", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.INCOMPLETE_LEVEL_TYPE));
+//                sT.addState("MOUSE_OVER", ((PathXMiniGame)game).getLevelNodeImage(PathXConstants.INCOMPLETE_LEVEL_TYPE));
+//
+//                Sprite s = new Sprite(sT, x, y, 0, 0, "VISIBLE");
+//                renderSprite(g, s);
+//            }
+//        }
     }
 
     private void renderLevelSelectStats(Graphics g) {
@@ -198,5 +200,20 @@ public class PathXPanel extends JPanel{
         g.drawString(balance, PathXConstants.LEVEL_SELECT_BALANCE_X, PathXConstants.LEVEL_SELECT_BALANCE_Y);
         String goal = 50000 + "";
         g.drawString(goal, PathXConstants.LEVEL_SELECT_GOAL_X, PathXConstants.LEVEL_SELECT_GOAL_Y);
+    }
+    
+    public void renderLevelInfo(Graphics g, PathXLevel level){
+        String name = level.getLevelName();
+        int reward = level.getReward();
+        String info = name + " - " + reward;
+        
+        g.setFont(FONT_TEXT_DISPLAY);
+        g.drawString(info, PathXConstants.LEVEL_SELECT_CITY_X, PathXConstants.LEVEL_SELECT_CITY_Y);
+        
+    }
+
+    private void updateLevelSprites() {
+        for (PathXLevelSprite ls : dataModel.getLevelSprites())
+            ls.update();
     }
 }

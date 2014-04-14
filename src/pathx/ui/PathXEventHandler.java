@@ -13,6 +13,7 @@ import mini_game.Viewport;
 import pathx.PathXConstants;
 import static pathx.PathXConstants.LEVEL_SELECT_SCREEN_STATE;
 import pathx.data.PathXLevel;
+import static pathx.ui.PathXSpriteState.INVISIBLE;
 
 /**
  * This class will manage all of the event handling for the game. Namely the 
@@ -47,15 +48,21 @@ public class PathXEventHandler {
     
     public void switchToMainMenu(){
         if (game.isCurrentScreenState(PathXConstants.LEVEL_SELECT_SCREEN_STATE) ||
-                game.isCurrentScreenState(PathXConstants.SETTINGS_SCREEN_STATE)){
+                game.isCurrentScreenState(PathXConstants.SETTINGS_SCREEN_STATE) ||
+                game.isCurrentScreenState(PathXConstants.HELP_SCREEN_STATE)){
             game.switchToMainMenu();
         }
     }
     
     public void switchToLevelSelectScreen(){
-        if (game.isCurrentScreenState(PathXConstants.MENU_SCREEN_STATE)){
+        if (game.isCurrentScreenState(PathXConstants.MENU_SCREEN_STATE) || 
+                game.isCurrentScreenState(PathXConstants.GAME_SCREEN_STATE)){
             game.switchToLevelSelectScreen();
         }
+    }
+    
+    public void switchToGameScreen(){
+        game.switchToGameScreen();
     }
     
     //Resets the player's record.
@@ -70,7 +77,8 @@ public class PathXEventHandler {
     }
     
     public void switchToHelpView(){
-        
+        if (game.isCurrentScreenState(PathXConstants.MENU_SCREEN_STATE))
+            game.switchToHelpScreen();
     }
     
     //Should save the player record before quitting.
@@ -83,7 +91,10 @@ public class PathXEventHandler {
     }
     
     public void closeLevelDialog(){
-        
+        game.getGUIDecor().get(PathXConstants.GAME_POPUP_TYPE).setState(INVISIBLE.toString());
+        game.getGUIDecor().get(PathXConstants.GAME_POPUP_TYPE).setEnabled(false);
+        game.getGUIButtons().get(PathXConstants.CLOSE_BUTTON_TYPE).setState(INVISIBLE.toString());
+        game.getGUIButtons().get(PathXConstants.CLOSE_BUTTON_TYPE).setEnabled(false);
     }
     
     public void startLevelRequest(){
@@ -97,29 +108,37 @@ public class PathXEventHandler {
     }
     //Will either scroll the level select or game level view.
     public void scrollUpRequest(){
-        if (vp.getMinViewportY() < vp.getViewportY() - 4) {
-            dataModel.getViewport().scroll(0, -4);
+        if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)) {
+            if (vp.getMinViewportY() < vp.getViewportY() - 4) {
+                dataModel.getViewport().scroll(0, -4);
+            }
         }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollDownRequest(){
-        if (vp.getMaxViewportY() > vp.getViewportY() + 4) {
-            dataModel.getViewport().scroll(0, 4);
+        if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)) {
+            if (vp.getMaxViewportY() > vp.getViewportY() + 4) {
+                dataModel.getViewport().scroll(0, 4);
+            }
         }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollLeftRequest(){
-        if (vp.getMinViewportX() < vp.getViewportX() - 4) {
-            dataModel.getViewport().scroll(-4, 0);
+        if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)) {
+            if (vp.getMinViewportX() < vp.getViewportX() - 4) {
+                dataModel.getViewport().scroll(-4, 0);
+            }
         }
     }
     
     //Will either scroll the level select or game level view.
     public void scrollRightRequest(){
-        if (vp.getMaxViewportX() > vp.getViewportX() + 4) {
-            dataModel.getViewport().scroll(4, 0);
+        if (game.isCurrentScreenState(LEVEL_SELECT_SCREEN_STATE)) {
+            if (vp.getMaxViewportX() > vp.getViewportX() + 4) {
+                dataModel.getViewport().scroll(4, 0);
+            }
         }
     }
     
