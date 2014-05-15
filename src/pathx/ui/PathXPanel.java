@@ -33,7 +33,7 @@ import properties_manager.PropertiesManager;
 
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXPanel extends JPanel{
     
@@ -92,7 +92,7 @@ public class PathXPanel extends JPanel{
             if (!dataModel.notStarted()){
                 
 //                RENDER THE CARS IF THE LEVEL HASN'T BEEN WON YET
-//                if (!dataModel.won())
+ //               if (!dataModel.won())
 //                    renderCars(g);
 //                
 //                RENDER THE GRAPH, INCLUDING THE ROADS AND NODES.
@@ -100,7 +100,7 @@ public class PathXPanel extends JPanel{
 //                
 //                RENDER DIALOGS IF THERE ARE ANY.
 //                renderDialogs(g);
-//                
+//                //
 //                renderLevelName(g);
             
             
@@ -114,7 +114,7 @@ public class PathXPanel extends JPanel{
             //RENDER BUTTONS AND DECOR
             renderGUIControls(g);
             
-//          renderStats(g);
+          //renderStats(g);
             
             
         }

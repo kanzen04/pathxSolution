@@ -14,7 +14,7 @@ import pathx.ui.Node;
 /**
  * This class will be used to hold information for every level in the pathX 
  * Mini-Game. Notably, the graph data structure will be stored here.
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXLevel {
     

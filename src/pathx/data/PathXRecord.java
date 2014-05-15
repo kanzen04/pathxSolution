@@ -11,7 +11,7 @@ import java.util.HashMap;
 /**
  * Holds the stats of the player for gameplay including the current balance,
  * levels unlocked, and specials unlocked.
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXRecord {
     public int balance;

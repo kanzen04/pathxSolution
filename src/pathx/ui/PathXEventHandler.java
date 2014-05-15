@@ -18,7 +18,7 @@ import static pathx.ui.PathXSpriteState.INVISIBLE;
 /**
  * This class will manage all of the event handling for the game. Namely the 
  * game's various specials.
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXEventHandler {
     
@@ -98,13 +98,13 @@ public class PathXEventHandler {
     }
     
     public void startLevelRequest(){
-        
+        System.out.println("Got request to start level");
     }
     
     //Triggered when the "try again" option is chosen after a level completion
     //or failure.
     public void resetLevel(){
-        
+        System.out.println("Reset level");
     }
     //Will either scroll the level select or game level view.
     public void scrollUpRequest(){
@@ -166,11 +166,12 @@ public class PathXEventHandler {
     
     //GAME SPECIALS
     public void makeLightGreen(Node node){
-        
+        System.out.println("Make light green");
+        node.makeGreen();
     }
     
     public void makeLightRed(Node node){
-        
+        node.makeRed();
     }
     
     public void freezeTime(){
@@ -178,11 +179,11 @@ public class PathXEventHandler {
     }
     
     public void decreaseRoadSpeed(Road road){
-        
+        road.decreaseSpeedLimit();
     }
     
     public void increaseRoadSpeed(Road road){
-        
+        road.increaseSpeedLimit();
     }
     
     public void increasePlayerSpeed(){
@@ -190,19 +191,18 @@ public class PathXEventHandler {
     }
     
     public void flattenTires(Car car){
-        
+        car.flattenTire();
     }
     
     public void emptyGasTank(Car car){
-        
+        car.emptyGas();
     }
     
     public void closeRoad(Road road){
-        
+        road.close();
     }
     
     public void closeIntersection(Node node){
-        
     }
     
     public void openIntersection(Node node){

@@ -19,7 +19,7 @@ import pathx.ui.PathXLevelSprite;
 
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXFileManager {
     

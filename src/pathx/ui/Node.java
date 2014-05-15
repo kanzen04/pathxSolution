@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * This node class represents intersections in-game and will manage nodes in a
  * corresponding levels graph.
- * @author Andrew
+ * @author Dawa Lama
  */
 public class Node {
     

@@ -8,7 +8,7 @@ package pathx.ui;
 
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public enum PathXSpriteState {
     

@@ -23,7 +23,7 @@ import pathx.ui.ZombieCar;
 
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXDataModel extends MiniGameDataModel{
     

@@ -14,7 +14,7 @@ import mini_game.Sprite;
  * This Car class lays out the template for any other cars to be used in the game.
  * This Car class is what the player will be using as his/her get away car. 
  * Enemy cars in game will be descendants of this class.
- * @author Andrew Rosiclair
+ * @author Dawa Lama Rosiclair
  */
 public class Car {
     
@@ -25,6 +25,8 @@ public class Car {
     private float xPos = s.getX();
     private float yPos = s.getY();
     
+    private boolean flat_tire = false;
+    private boolean empty_gas = false;
     //Speed of the sprite
     private double speed;
     
@@ -52,6 +54,14 @@ public class Car {
     
     public Sprite getSprite(){
         return s;
+    }
+    
+    public void flattenTire() {
+        flat_tire = true;
+    }
+    
+    public void emptyGas() {
+        empty_gas = true;
     }
     
     public void changeDestination(ArrayList<Node> path){

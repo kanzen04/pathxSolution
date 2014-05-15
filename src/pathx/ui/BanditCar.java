@@ -11,7 +11,7 @@ import mini_game.Sprite;
 
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class BanditCar extends Car{
 

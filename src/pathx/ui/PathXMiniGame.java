@@ -33,7 +33,7 @@ import properties_manager.PropertiesManager;
 
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXMiniGame extends MiniGame{
     
@@ -911,6 +911,14 @@ public class PathXMiniGame extends MiniGame{
         });
         
         //SPECIALS EVENT HANDLERS GO HERE
+        // This needs to happen after you select node.
+        Sprite greenButton = guiButtons.get(MAKE_GREEN_BUTTON_TYPE);
+        greenButton.setActionListener(new ActionListener() {
+             public void actionPerformed(ActionEvent ae)
+                { 
+                    getEventHandler().makeLightGreen(null);
+                }
+        });
     }
     
     private void initSettingsHandlers(){

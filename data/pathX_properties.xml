@@ -116,6 +116,7 @@
 
     <property_options_list>
         <property_options name="LEVEL_OPTIONS">
+            <option>New York, 1, Path,10, 10</option>
             <option>Los Angeles, 50, Path, 160, 400</option>
         </property_options>
     </property_options_list>

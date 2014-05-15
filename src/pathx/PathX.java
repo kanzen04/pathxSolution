@@ -6,7 +6,6 @@
 
 package pathx;
 
-import mini_game.MiniGame;
 import properties_manager.PropertiesManager;
 import static pathx.PathXConstants.*;
 import pathx.ui.PathXErrorHandler;
@@ -14,7 +13,7 @@ import pathx.ui.PathXMiniGame;
 import xml_utilities.InvalidXMLFileFormatException;
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathX {
 
@@ -53,6 +52,7 @@ public class PathX {
         /* SETUP FILE NAMES */
         FILE_GAME_PROPERTIES,
         FILE_PLAYER_RECORD,
+        
         /* DIRECTORY PATHS FOR FILE LOADING */
         PATH_AUDIO,
         PATH_IMG,
@@ -163,9 +163,6 @@ public class PathX {
         AUDIO_CUE_FAIL,
         SONG_CUE_GAME_SCREEN,
         SONG_CUE_MENU_SCREEN,
-        
-        
-
     }
 }    
 

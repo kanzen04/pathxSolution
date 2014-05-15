@@ -13,7 +13,7 @@ import properties_manager.PropertiesManager;
 
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXErrorHandler {
     

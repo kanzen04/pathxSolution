@@ -22,7 +22,7 @@ import static pathx.ui.PathXSpriteState.MOUSE_OVER;
 import static pathx.ui.PathXSpriteState.VISIBLE;
 /**
  *
- * @author Andrew
+ * @author Dawa Lama
  */
 public class PathXLevelSprite {
     
