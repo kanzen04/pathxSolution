@@ -11,6 +11,7 @@ import java.awt.Font;
 /**
  *
  * @author Dawa Lama
+ * Pathx
  */
 public class PathXConstants {
     // WE NEED THESE CONSTANTS JUST TO GET STARTED
