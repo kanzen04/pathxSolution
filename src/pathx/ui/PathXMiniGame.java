@@ -89,6 +89,12 @@ public class PathXMiniGame extends MiniGame{
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(LEVEL_SELECT_SCREEN_STATE);
         
+        //DEACTIVATE POPUP DIALOG AND CLOSE BUTTON
+        guiDecor.get(GAME_POPUP_TYPE).setState(INVISIBLE.toString());
+        guiDecor.get(GAME_POPUP_TYPE).setEnabled(false);
+        guiButtons.get(CLOSE_BUTTON_TYPE).setState(INVISIBLE.toString());
+        guiButtons.get(CLOSE_BUTTON_TYPE).setEnabled(false);
+        
         //ACTIVE NORTH PANEL CONTROLS
         guiButtons.get(BACK_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
         guiButtons.get(BACK_BUTTON_TYPE).setEnabled(true);
@@ -180,6 +186,12 @@ public class PathXMiniGame extends MiniGame{
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(MENU_SCREEN_STATE);
         
+        //DEACTIVATE POPUP DIALOG AND CLOSE BUTTON
+        guiDecor.get(GAME_POPUP_TYPE).setState(INVISIBLE.toString());
+        guiDecor.get(GAME_POPUP_TYPE).setEnabled(false);
+        guiButtons.get(CLOSE_BUTTON_TYPE).setState(INVISIBLE.toString());
+        guiButtons.get(CLOSE_BUTTON_TYPE).setEnabled(false);
+        
         //Activate Menu Buttons
         guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.VISIBLE.toString());
         guiButtons.get(PLAY_BUTTON_TYPE).setEnabled(true);
@@ -229,6 +241,12 @@ public class PathXMiniGame extends MiniGame{
         // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(SETTINGS_SCREEN_STATE);
         
+        //DEACTIVATE POPUP DIALOG AND CLOSE BUTTON
+        guiDecor.get(GAME_POPUP_TYPE).setState(INVISIBLE.toString());
+        guiDecor.get(GAME_POPUP_TYPE).setEnabled(false);
+        guiButtons.get(CLOSE_BUTTON_TYPE).setState(INVISIBLE.toString());
+        guiButtons.get(CLOSE_BUTTON_TYPE).setEnabled(false);
+        
         //DEACTIVE MAIN MENU BUTTONS
         guiButtons.get(PLAY_BUTTON_TYPE).setState(PathXSpriteState.INVISIBLE.toString());
         guiButtons.get(PLAY_BUTTON_TYPE).setEnabled(false);
@@ -254,6 +272,12 @@ public class PathXMiniGame extends MiniGame{
         
          // CHANGE THE BACKGROUND
         guiDecor.get(BACKGROUND_TYPE).setState(HELP_SCREEN_STATE);
+        
+        //DEACTIVATE POPUP DIALOG AND CLOSE BUTTON
+        guiDecor.get(GAME_POPUP_TYPE).setState(INVISIBLE.toString());
+        guiDecor.get(GAME_POPUP_TYPE).setEnabled(false);
+        guiButtons.get(CLOSE_BUTTON_TYPE).setState(INVISIBLE.toString());
+        guiButtons.get(CLOSE_BUTTON_TYPE).setEnabled(false);
         
         //ACTIVATE QUIT AND BACK BUTTONS
         guiButtons.get(QUIT_BUTTON_TYPE).setState(VISIBLE.toString());
@@ -912,6 +936,7 @@ public class PathXMiniGame extends MiniGame{
         
         //SPECIALS EVENT HANDLERS GO HERE
         // This needs to happen after you select node.
+        //To make green 
         Sprite greenButton = guiButtons.get(MAKE_GREEN_BUTTON_TYPE);
         greenButton.setActionListener(new ActionListener() {
              public void actionPerformed(ActionEvent ae)
@@ -919,6 +944,135 @@ public class PathXMiniGame extends MiniGame{
                     getEventHandler().makeLightGreen(null);
                 }
         });
+        
+        //To make red
+        Sprite redButton = guiButtons.get(MAKE_RED_BUTTON_TYPE);
+        redButton.setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().makeLightRed(null);
+            }
+        });
+        
+        //To freeze time
+        Sprite freezeButton = guiButtons.get(FREEZE_BUTTON_TYPE);
+        freezeButton.setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().freezeTime();
+            }
+        });
+        
+        //To decrease road speed
+        Sprite decreaseSpeedButton = guiButtons.get(DECREASE_SPEED_BUTTON_TYPE);
+        decreaseSpeedButton.setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().decreaseRoadSpeed(null);
+            }
+        });
+        
+        //To increase road speed
+        Sprite increaseSpeedButton = guiButtons.get(INCREASE_SPEED_BUTTON_TYPE);
+        increaseSpeedButton.setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().increaseRoadSpeed(null);
+            }
+        });
+        
+        //To increase player speed
+        Sprite increasePlayerSpeedButton = guiButtons.get(INCREASE_PLAYER_SPEED_BUTTON_TYPE);
+        increasePlayerSpeedButton.setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().increasePlayerSpeed();
+            }
+        });
+        
+        //To flatten tires
+        Sprite flattenTireButotn = guiButtons.get(FLAT_TIRE_BUTTON_TYPE);
+        flattenTireButotn.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().flattenTires(null);
+            }
+        });
+        
+        //To empty gas tank
+        Sprite emptyGasTankButton = guiButtons.get(EMPTY_GAS_BUTTON_TYPE);
+        emptyGasTankButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().emptyGasTank(null);
+            }
+        });
+        
+        //To Close road
+        Sprite closeRoadButton = guiButtons.get(CLOSE_ROAD_BUTTON_TYPE);
+        closeRoadButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().closeRoad(null);
+            }
+        });
+        
+        //To close intersection
+        Sprite closeIntersectionButton = guiButtons.get(CLOSE_INTERSECTION_BUTTON_TYPE);
+        closeIntersectionButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().closeIntersection(null);
+            }
+        });
+        
+        //To open intersection
+        Sprite openIntersectionButton = guiButtons.get(OPEN_INTERSECTION_BUTTON_TYPE);
+        openIntersectionButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().openIntersection(null);
+            }
+        });
+        
+        //To steal
+        Sprite stealButton = guiButtons.get(STEAL_BUTTON_TYPE);
+        stealButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().steal();
+            }
+        });        
+        
+        //To mind control
+        Sprite mindControlButton = guiButtons.get(MIND_CONTROL_BUTTON_TYPE);
+        mindControlButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().mindControl(null);
+            }
+        });        
+        
+        //For intangibility 
+        Sprite intangibilityButton = guiButtons.get(INTANGIBILITY_BUTTON_TYPE);
+        intangibilityButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().intangibility();
+            }
+        });                
+        
+        //For mindless terror
+        Sprite mindlessTerrorButton = guiButtons.get(MINDLESS_TERROR_BUTTON_TYPE);
+        mindlessTerrorButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().mindlessTerror(null);
+            }
+        });        
+        
+        //Fly mode
+        Sprite flyModeButton = guiButtons.get(FLYING_BUTTON_TYPE);
+        flyModeButton.setActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent ae) {
+                getEventHandler().fly();
+            }
+        });
+
+        //God mode
+        Sprite godModeButton = guiButtons.get(GOD_MODE_BUTTON_TYPE);
+        godModeButton.setActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent ae){
+                getEventHandler().godMode();
+            }
+        });
+        
     }
     
     private void initSettingsHandlers(){

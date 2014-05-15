@@ -67,7 +67,7 @@ public class PathXEventHandler {
     
     //Resets the player's record.
     public void resetRequest(){
-        
+//        game.reset();
     }
     
     public void switchToSettingsMenu(){

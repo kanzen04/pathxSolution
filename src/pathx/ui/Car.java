@@ -14,7 +14,7 @@ import mini_game.Sprite;
  * This Car class lays out the template for any other cars to be used in the game.
  * This Car class is what the player will be using as his/her get away car. 
  * Enemy cars in game will be descendants of this class.
- * @author Dawa Lama Rosiclair
+ * @author Dawa Lama 
  */
 public class Car {
     

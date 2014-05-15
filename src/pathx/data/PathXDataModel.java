@@ -96,8 +96,8 @@ public class PathXDataModel extends MiniGameDataModel{
      */
     @Override
     public void reset(MiniGame mg) {
-//        Sprite s = player.getSprite();
-//        player = new Car(s, level.getStartNode(), PathXSpriteState.STOPPED.toString());
+        Sprite s = player.getSprite();
+        player = new Car(s, level.getStartNode(), PathXSpriteState.STOPPED.toString());
         
     }
 
